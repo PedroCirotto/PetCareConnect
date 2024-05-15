@@ -1,0 +1,170 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  min-height: 100vh;  
+}
+
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 9px 30px;
+  height: 19%;
+  background-color: rgb(40, 175, 130);
+  z-index: 99;
+}
+
+.logo-img{
+  height: 190px;
+  margin-top: 10px;
+  width: auto;
+  object-fit: cover;
+}
+
+.input-search{
+  width: 650px;
+  height: 2.25rem;
+  user-select: none;
+  box-sizing: content-box;
+  outline: none;
+  border: none;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.input-search[placeholder]{
+  font-weight: 400;
+  line-height: 132%;
+}
+
+.navigation a{
+  position: relative;
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: none;
+
+  font-weight: 500;
+  margin-left: 30px;
+}
+
+.navigation .btnLogin-popup{
+  width: 130px;
+  height: 55px;
+  margin-left: 30px;
+
+  text-align: center;
+  color: rgb(10, 107, 75);
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 6px;
+
+  outline: none;
+  cursor: pointer;
+
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  transition: transform 0.3s ease;
+}
+
+.navigation .btnLogin-popup:hover{
+  background: #fff;
+  color: #162938;
+  transform: translateY(-5px);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin: 5px 10px 5px 10px;
+  margin-top: 13%;
+  margin-left: 20px;
+ 
+ 
+}
+
+.main-text h1{
+  font-size: 2rem;
+  font-weight: 900;
+  color:#162938;
+  max-width: 544px;
+  margin-top: 22px;
+  margin-bottom: 0.5rem;
+}
+
+.main-text p{
+  font-size: 1.130rem;
+  color: rgb(40, 38, 38);
+  font-weight: 500;
+  width: 100%;
+  margin-top: 20px;
+}
+.main-text .patch-img{
+  height: 176px;
+  position: relative;
+  z-index: 1;
+  margin: 40px 0 30px 0;
+}
+
+.main-text a{
+  position: relative;
+  top: -25%;
+  left: 1%;
+
+ 
+  border: 2px solid none;
+  border-radius: 14px;
+  background-color: rgb(40, 175, 130);
+  padding: 40px 100px 40px 200px;
+  margin: 5px 0 30px 0;
+
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.main-text a:hover{
+  background-color: #162938;
+ 
+}
+.main-banner img{
+  object-fit: cover;
+  height: 414px;
+  width: 590px;
+  border-radius: 23px;
+}
+
+.cadastro{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 200px;
+  column-gap: 16px;
+  padding: 6px;
+}
+.main-cadastro{
+  background-color: #1f262c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px black;
+}
