@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 const Hero = styled.main`
-  margin-top: 10rem;
+  margin-top: 1rem;
 `;
 
 const FormularioCadastro = styled.div`
@@ -17,8 +17,9 @@ const FormularioCadastro = styled.div`
   column-gap: 110px;
   max-width: 90vw;
   margin: auto;
-  margin-top: 13%;
+  margin-top: 0.5rem;
   padding: 20px;
+  background-color: #b6b3ae6e;
   backdrop-filter: blur(10px);
 `;
 
@@ -57,7 +58,7 @@ const TextArea = styled.textarea`
 `;
 
 const Button = styled.button`
-  background-color: #4caf50;
+  background-color: rgb(40, 175, 130);
   color: white;
   padding: 20px 40px;
   border: none;
@@ -82,29 +83,36 @@ const Img = styled.img`
 `;
 
 const Table = styled.table`
-  width: 90%;
-  margin: 20px auto;
+  margin: 1rem auto;
+  width: 90vw;
   border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
 
   th,
   td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
   }
 
   th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4caf50;
-    color: white;
+    background-color: rgb(40, 175, 130);
+    color: #fff;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  button {
+    margin-right: 10px;
   }
 `;
 
 const H2 = styled.h2`
   text-align: center;
   margin-top: 2rem;
-`
+`;
 
 function Estabelecimento() {
   const [estabelecimentos, setEstabelecimentos] = useState([]);
@@ -116,6 +124,8 @@ function Estabelecimento() {
   const [servicos, setServicos] = useState("");
   const [descricao, setDescricao] = useState("");
   const [editingEstabelecimento, setEditingEstabelecimento] = useState(null);
+
+  console.log(estabelecimentos);
 
   useEffect(() => {
     fetchEstabelecimentos();
@@ -166,12 +176,12 @@ function Estabelecimento() {
 
   const handleEdit = (estabelecimento) => {
     setEditingEstabelecimento(estabelecimento);
-    setNome(estabelecimento.nome);
-    setEndereco(estabelecimento.endereco);
-    setEmail(estabelecimento.email);
-    setTelefone(estabelecimento.telefone);
-    setHorario(estabelecimento.horario);
-    setServicos(estabelecimento.servicos);
+    setNome(estabelecimento.nome_estabelecimento);
+    setEndereco(estabelecimento.endereco_completo);
+    setEmail(estabelecimento.email_contato);
+    setTelefone(estabelecimento.telefone_contato);
+    setHorario(estabelecimento.horario_funcionamento);
+    setServicos(estabelecimento.servicos_fornecidos);
     setDescricao(estabelecimento.descricao);
   };
 
@@ -315,7 +325,7 @@ function Estabelecimento() {
           </FormularioCadastro>
         </section>
       </Hero>
-        <H2>Estabelecimentos Cadastrados</H2>
+      <H2>Estabelecimentos Cadastrados</H2>
       <Table>
         <thead>
           <tr>

@@ -55,7 +55,6 @@ const MainCadastro = styled.div`
   background-color: #28af82;
 
   .img-card img {
-    height: 290px;
     width: 100%;
     object-fit: cover;
     border-top-left-radius: 7px;

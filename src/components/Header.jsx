@@ -6,18 +6,17 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
+
   width: 100%;
-  padding: 9px 30px;
-  height: 19%;
+  padding: 9px 10px;
+  height: 12%;
   background-color: rgb(40, 175, 130);
   z-index: 99;
+  margin-bottom: 2rem;
 `;
 
 const LogoImg = styled.img`
-  height: 190px;
+  height: 135px;
   margin-top: 10px;
   width: auto;
   object-fit: cover;

@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 const Hero = styled.main`
-  margin-top: 10rem;
+  margin-top: 1rem;
 `;
 
 const FormularioCadastro = styled.div`
@@ -17,8 +17,9 @@ const FormularioCadastro = styled.div`
   column-gap: 110px;
   max-width: 90vw;
   margin: auto;
-  margin-top: 13%;
+  margin-top: 0.5rem;
   padding: 20px;
+  background-color: #b6b3ae6e;
   backdrop-filter: blur(10px);
 `;
 
@@ -64,10 +65,11 @@ const TextArea = styled.textarea`
   outline: none;
   border-radius: 5px;
   border: 1px solid #ccc;
+  resize: none;
 `;
 
 const Button = styled.button`
-  background-color: #4caf50;
+  background-color: rgb(40, 175, 130);
   color: white;
   padding: 20px 40px;
   border: none;
@@ -98,14 +100,29 @@ const TableWrapper = styled.div`
 `;
 
 const Table = styled.table`
-  width: 100%;
+  margin: 1rem auto;
+  width: 90vw;
   border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+
+  th,
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
 
   th {
-    background-color: #4caf50;
+    background-color: rgb(40, 175, 130);
     color: #fff;
-    padding: 5px;
-    font-size: 14px;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  button {
+    margin-right: 10px;
   }
 `;
 
@@ -121,7 +138,8 @@ const Buttonn = styled.button`
   padding: 6px 12px;
   margin-right: 8px;
   cursor: pointer;
-  background-color: ${(props) => (props.danger ? "#f44336" : "#4caf50")};
+  background-color: ${(props) =>
+    props.danger ? "#f44336" : "rgb(40, 175, 130)"};
   color: white;
   border: none;
   border-radius: 4px;
@@ -140,14 +158,19 @@ function CadastroForm() {
   const [endereco_usuario, setEnderecoUsuario] = useState("");
   const [nome_pet, setNomePet] = useState("");
   const [tipo_pet, setTipoPet] = useState("");
-  const [raca_pet, setRacaPet] = useState("");
-  const [idade_pet, setIdadePet] = useState("");
-  const [peso_pet, setPesoPet] = useState("");
-  const [observacoes_pet, setObservacoesPet] = useState("");
+  const [raca, setRacaPet] = useState("");
+  const [idade, setIdadePet] = useState("");
+  const [peso, setPesoPet] = useState("");
+  const [observacoes, setObservacoesPet] = useState("");
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentClienteId, setCurrentClienteId] = useState(null);
 
   useEffect(() => {
     fetchClientes();
   }, []);
+
+  console.log(clientes);
 
   const fetchClientes = async () => {
     try {
@@ -168,17 +191,24 @@ function CadastroForm() {
       endereco: endereco_usuario,
       nome_pet,
       tipo_pet,
-      raca_pet,
-      idade_pet,
-      peso_pet,
-      observacoes_pet,
+      raca,
+      idade,
+      peso,
+      observacoes,
     };
 
-    console.log(data)
-
     try {
-      await axios.post("http://localhost:3001/tutores", data);
-      
+      if (isEditing) {
+        await axios.put(
+          `http://localhost:3001/tutores/${currentClienteId}`,
+          data
+        );
+        setIsEditing(false);
+        setCurrentClienteId(null);
+      } else {
+        await axios.post("http://localhost:3001/tutores", data);
+      }
+
       resetForm();
       fetchClientes();
     } catch (error) {
@@ -197,6 +227,24 @@ function CadastroForm() {
     setIdadePet("");
     setPesoPet("");
     setObservacoesPet("");
+    setIsEditing(false);
+    setCurrentClienteId(null);
+  };
+
+  const handleEdit = (cliente) => {
+    setIsEditing(true);
+    setCurrentClienteId(cliente.id);
+
+    setNomeUsuario(cliente.nome_completo);
+    setEmailUsuario(cliente.email);
+    setTelefoneUsuario(cliente.telefone);
+    setEnderecoUsuario(cliente.endereco);
+    setNomePet(cliente.nome_pet);
+    setTipoPet(cliente.tipo_pet);
+    setRacaPet(cliente.raca);
+    setIdadePet(cliente.idade);
+    setPesoPet(cliente.peso);
+    setObservacoesPet(cliente.observacoes);
   };
 
   const handleDelete = async (id) => {
@@ -295,7 +343,7 @@ function CadastroForm() {
                   type="text"
                   id="raca_pet"
                   name="raca_pet"
-                  value={raca_pet}
+                  value={raca}
                   onChange={(e) => setRacaPet(e.target.value)}
                   required
                 />
@@ -304,7 +352,7 @@ function CadastroForm() {
                   type="number"
                   id="idade_pet"
                   name="idade_pet"
-                  value={idade_pet}
+                  value={idade}
                   onChange={(e) => setIdadePet(e.target.value)}
                   required
                 />
@@ -314,7 +362,7 @@ function CadastroForm() {
                   step="0.1"
                   id="peso_pet"
                   name="peso_pet"
-                  value={peso_pet}
+                  value={peso}
                   onChange={(e) => setPesoPet(e.target.value)}
                   required
                 />
@@ -325,11 +373,21 @@ function CadastroForm() {
                   id="observacoes_pet"
                   name="observacoes_pet"
                   rows="4"
-                  value={observacoes_pet}
+                  value={observacoes}
                   onChange={(e) => setObservacoesPet(e.target.value)}
                 />
               </FormFieldset>
-              <Button type="submit">Cadastrar</Button>
+              <Button type="submit">
+                {isEditing ? "Atualizar" : "Cadastrar"}
+              </Button>
+              {isEditing && (
+                <Button
+                  onClick={resetForm}
+                  style={{ backgroundColor: "#f44336" }}
+                >
+                  Cancelar
+                </Button>
+              )}
             </form>
             <Img
               src="imgs/pet-dog-man.jpg"
@@ -365,16 +423,13 @@ function CadastroForm() {
                 <TableCell>{cliente.endereco}</TableCell>
                 <TableCell>{cliente.nome_pet}</TableCell>
                 <TableCell>{cliente.tipo_pet}</TableCell>
-                <TableCell>{cliente.raca_pet}</TableCell>
-                <TableCell>{cliente.idade_pet}</TableCell>
-                <TableCell>{cliente.peso_pet}</TableCell>
-                <TableCell>{cliente.observacoes_pet}</TableCell>
+                <TableCell>{cliente.raca}</TableCell>
+                <TableCell>{cliente.idade}</TableCell>
+                <TableCell>{cliente.peso}</TableCell>
+                <TableCell>{cliente.observacoes}</TableCell>
                 <TableCell>
                   <Buttonn onClick={() => handleEdit(cliente)}>Editar</Buttonn>
-                  <Buttonn
-                    onClick={() => handleDelete(cliente.id)}
-                    danger
-                  >
+                  <Buttonn onClick={() => handleDelete(cliente.id)} danger>
                     Excluir
                   </Buttonn>
                 </TableCell>

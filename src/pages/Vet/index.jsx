@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import React, { useState, useEffect } from "react";
 
 const Hero = styled.main`
-  margin-top: 10rem;
+  margin-top: 1rem;
 `;
 
 const FormularioCadastro = styled.div`
@@ -17,8 +17,9 @@ const FormularioCadastro = styled.div`
   column-gap: 110px;
   max-width: 90vw;
   margin: auto;
-  margin-top: 13%;
+  margin-top: 0.5rem;
   padding: 20px;
+  background-color: #b6b3ae6e;
   backdrop-filter: blur(10px);
 `;
 
@@ -48,7 +49,7 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  background-color: #4caf50;
+  background-color: rgb(40, 175, 130);
   color: white;
   padding: 20px 40px;
   border: none;
@@ -124,6 +125,8 @@ function Vet() {
     }
   };
 
+  console.log(veterinarios);
+
   useEffect(() => {
     fetchVeterinarios();
   }, []);
@@ -169,9 +172,9 @@ function Vet() {
     setEspecialidade(vet.especialidade);
     setTelefone(vet.telefone);
     setEmail(vet.email);
-    setCrmv(vet.crmv);
+    setCrmv(vet.numero_crmv);
     setCpf(vet.cpf);
-    setEndereco(vet.endereco);
+    setEndereco(vet.endereco_profissional);
   };
 
   const handleDelete = async (id) => {
@@ -317,8 +320,8 @@ function Vet() {
               <td>{vet.telefone}</td>
               <td>{vet.email}</td>
               <td>{vet.cpf}</td>
-              <td>{vet.endereco}</td>
-              <td>{vet.crmv}</td>
+              <td>{vet.endereco_profissional}</td>
+              <td>{vet.numero_crmv}</td>
               <td>
                 <Button onClick={() => handleEdit(vet)}>Editar</Button>
                 <Button

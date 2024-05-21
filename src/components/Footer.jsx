@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const Footerr = styled.footer`
-  background-color: #1629381e;
+  background-color: rgb(40, 175, 130);
+  margin-top: 3rem;
 `;
 
 const FooterContent = styled.div`
@@ -20,7 +21,7 @@ const FooterRow = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   a {
@@ -34,12 +35,12 @@ const FooterRow = styled.div`
   }
 
   h2 {
-    color: #28af82;
+    color: #eee;
   }
 `;
 
 const HrLinha = styled.hr`
-  border: 1px solid #28af827b;
+  border: 1px solid #f5f5f57a;
   width: 96%;
   margin: 20px auto;
 `;
@@ -143,7 +144,7 @@ function Footer() {
           </a>
         </SocialMediaIcons>
         <FooterCopy class="footer-copyright">
-          © 2024 Starbucks Coffee Company. Todos os direitos reservados.
+          © 2024 Pet Care Connect. Todos os direitos reservados.
         </FooterCopy>
       </Footerr>
     </>

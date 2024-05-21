@@ -6,8 +6,7 @@ const Heroo = styled.header`
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   max-width: 1424px;
-  margin: 0 auto;
-  margin-top: 12%;
+  margin: 1rem auto;
 `;
 
 const MainText = styled.div`
