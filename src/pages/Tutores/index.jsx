@@ -1,7 +1,8 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import React from "react";
 
 const Hero = styled.main`
   margin-top: 10rem;
@@ -15,7 +16,8 @@ const FormularioCadastro = styled.div`
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   column-gap: 110px;
   max-width: 90vw;
-  margin: 40px auto 50px auto;
+  margin: auto;
+  margin-top: 13%;
   padding: 20px;
   backdrop-filter: blur(10px);
 `;
@@ -89,14 +91,130 @@ const Img = styled.img`
   border-bottom-right-radius: 10px;
 `;
 
+const TableWrapper = styled.div`
+  max-width: 90vw;
+  margin: auto;
+  margin-top: 2rem;
+`;
+
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 5px;
+    font-size: 14px;
+  }
+`;
+
+const TableRow = styled.tr`
+  border-bottom: 1px solid #ddd;
+`;
+
+const TableCell = styled.td`
+  padding: 8px;
+`;
+
+const Buttonn = styled.button`
+  padding: 6px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+  background-color: ${(props) => (props.danger ? "#f44336" : "#4caf50")};
+  color: white;
+  border: none;
+  border-radius: 4px;
+`;
+
+const H2 = styled.h2`
+  text-align: center;
+  margin-top: 2rem;
+`;
+
 function CadastroForm() {
+  const [clientes, setClientes] = useState([]);
+  const [nome_usuario, setNomeUsuario] = useState("");
+  const [email_usuario, setEmailUsuario] = useState("");
+  const [telefone_usuario, setTelefoneUsuario] = useState("");
+  const [endereco_usuario, setEnderecoUsuario] = useState("");
+  const [nome_pet, setNomePet] = useState("");
+  const [tipo_pet, setTipoPet] = useState("");
+  const [raca_pet, setRacaPet] = useState("");
+  const [idade_pet, setIdadePet] = useState("");
+  const [peso_pet, setPesoPet] = useState("");
+  const [observacoes_pet, setObservacoesPet] = useState("");
+
+  useEffect(() => {
+    fetchClientes();
+  }, []);
+
+  const fetchClientes = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/tutores");
+      setClientes(response.data);
+    } catch (error) {
+      console.error("Erro ao buscar clientes:", error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      nome_completo: nome_usuario,
+      email: email_usuario,
+      telefone: telefone_usuario,
+      endereco: endereco_usuario,
+      nome_pet,
+      tipo_pet,
+      raca_pet,
+      idade_pet,
+      peso_pet,
+      observacoes_pet,
+    };
+
+    console.log(data)
+
+    try {
+      await axios.post("http://localhost:3001/tutores", data);
+      
+      resetForm();
+      fetchClientes();
+    } catch (error) {
+      console.error("Erro ao cadastrar:", error);
+    }
+  };
+
+  const resetForm = () => {
+    setNomeUsuario("");
+    setEmailUsuario("");
+    setTelefoneUsuario("");
+    setEnderecoUsuario("");
+    setNomePet("");
+    setTipoPet("");
+    setRacaPet("");
+    setIdadePet("");
+    setPesoPet("");
+    setObservacoesPet("");
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/tutores/${id}`);
+      fetchClientes();
+    } catch (error) {
+      console.error("Erro ao excluir cliente:", error);
+    }
+  };
+
   return (
     <div>
       <Header />
       <Hero className="hero">
         <section className="box-cadastro">
           <FormularioCadastro>
-            <form action="#" method="post">
+            <form onSubmit={handleSubmit}>
               <FormFieldset className="tutor-box">
                 <p>
                   Bem-vindo! Para proporcionar um atendimento ainda melhor para
@@ -113,6 +231,8 @@ function CadastroForm() {
                   type="text"
                   id="nome_usuario"
                   name="nome_usuario"
+                  value={nome_usuario}
+                  onChange={(e) => setNomeUsuario(e.target.value)}
                   required
                 />
                 <Label htmlFor="email_usuario">Email:</Label>
@@ -120,6 +240,8 @@ function CadastroForm() {
                   type="email"
                   id="email_usuario"
                   name="email_usuario"
+                  value={email_usuario}
+                  onChange={(e) => setEmailUsuario(e.target.value)}
                   required
                 />
                 <Label htmlFor="telefone_usuario">Telefone:</Label>
@@ -127,6 +249,8 @@ function CadastroForm() {
                   type="tel"
                   id="telefone_usuario"
                   name="telefone_usuario"
+                  value={telefone_usuario}
+                  onChange={(e) => setTelefoneUsuario(e.target.value)}
                   required
                 />
                 <Label htmlFor="endereco_usuario">Endereço:</Label>
@@ -134,6 +258,8 @@ function CadastroForm() {
                   type="text"
                   id="endereco_usuario"
                   name="endereco_usuario"
+                  value={endereco_usuario}
+                  onChange={(e) => setEnderecoUsuario(e.target.value)}
                   required
                 />
               </FormFieldset>
@@ -143,23 +269,53 @@ function CadastroForm() {
                   <h1>Informações do Pet</h1>
                 </legend>
                 <Label htmlFor="nome_pet">Nome do Pet:</Label>
-                <Input type="text" id="nome_pet" name="nome_pet" required />
+                <Input
+                  type="text"
+                  id="nome_pet"
+                  name="nome_pet"
+                  value={nome_pet}
+                  onChange={(e) => setNomePet(e.target.value)}
+                  required
+                />
                 <Label htmlFor="tipo_pet">Tipo de Pet:</Label>
-                <Select id="tipo_pet" name="tipo_pet" required>
+                <Select
+                  id="tipo_pet"
+                  name="tipo_pet"
+                  value={tipo_pet}
+                  onChange={(e) => setTipoPet(e.target.value)}
+                  required
+                >
+                  <option value="">Selecione...</option>
                   <option value="cachorro">Cachorro</option>
                   <option value="gato">Gato</option>
                   <option value="outro">Outro</option>
                 </Select>
                 <Label htmlFor="raca_pet">Raça:</Label>
-                <Input type="text" id="raca_pet" name="raca_pet" required />
+                <Input
+                  type="text"
+                  id="raca_pet"
+                  name="raca_pet"
+                  value={raca_pet}
+                  onChange={(e) => setRacaPet(e.target.value)}
+                  required
+                />
                 <Label htmlFor="idade_pet">Idade:</Label>
-                <Input type="number" id="idade_pet" name="idade_pet" required />
+                <Input
+                  type="number"
+                  id="idade_pet"
+                  name="idade_pet"
+                  value={idade_pet}
+                  onChange={(e) => setIdadePet(e.target.value)}
+                  required
+                />
                 <Label htmlFor="peso_pet">Peso (kg):</Label>
                 <Input
                   type="number"
                   step="0.1"
                   id="peso_pet"
                   name="peso_pet"
+                  value={peso_pet}
+                  onChange={(e) => setPesoPet(e.target.value)}
                   required
                 />
                 <Label htmlFor="observacoes_pet">
@@ -169,15 +325,64 @@ function CadastroForm() {
                   id="observacoes_pet"
                   name="observacoes_pet"
                   rows="4"
+                  value={observacoes_pet}
+                  onChange={(e) => setObservacoesPet(e.target.value)}
                 />
               </FormFieldset>
-
               <Button type="submit">Cadastrar</Button>
             </form>
-            <Img src="imgs/pet-dog-man.jpg" alt="" />
+            <Img
+              src="imgs/pet-dog-man.jpg"
+              alt="Imagem de um homem com um cachorro"
+            />
           </FormularioCadastro>
         </section>
       </Hero>
+      <H2>Clientes cadastrados</H2>
+      <TableWrapper>
+        <Table>
+          <thead>
+            <tr>
+              <th>Nome Completo</th>
+              <th>Email</th>
+              <th>Telefone</th>
+              <th>Endereço</th>
+              <th>Nome do Pet</th>
+              <th>Tipo do Pet</th>
+              <th>Raça do Pet</th>
+              <th>Idade do Pet</th>
+              <th>Peso do Pet</th>
+              <th>Observações do Pet</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {clientes.map((cliente, index) => (
+              <TableRow key={index}>
+                <TableCell>{cliente.nome_completo}</TableCell>
+                <TableCell>{cliente.email}</TableCell>
+                <TableCell>{cliente.telefone}</TableCell>
+                <TableCell>{cliente.endereco}</TableCell>
+                <TableCell>{cliente.nome_pet}</TableCell>
+                <TableCell>{cliente.tipo_pet}</TableCell>
+                <TableCell>{cliente.raca_pet}</TableCell>
+                <TableCell>{cliente.idade_pet}</TableCell>
+                <TableCell>{cliente.peso_pet}</TableCell>
+                <TableCell>{cliente.observacoes_pet}</TableCell>
+                <TableCell>
+                  <Buttonn onClick={() => handleEdit(cliente)}>Editar</Buttonn>
+                  <Buttonn
+                    onClick={() => handleDelete(cliente.id)}
+                    danger
+                  >
+                    Excluir
+                  </Buttonn>
+                </TableCell>
+              </TableRow>
+            ))}
+          </tbody>
+        </Table>
+      </TableWrapper>
       <Footer />
     </div>
   );

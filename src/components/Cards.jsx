@@ -45,8 +45,10 @@ const CadastrosCard = styled.div`
 `;
 
 const MainCadastro = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 800px;
   width: 90%;
   border-radius: 7px;
@@ -63,7 +65,6 @@ const MainCadastro = styled.div`
   .patch-card img {
     position: relative;
     top: -55%;
-    left: 39.5%;
     height: 90px;
     border: 1px solid white;
     background: #ffffff7e;
@@ -114,6 +115,8 @@ const MainCadastro = styled.div`
       border-radius: 8px;
       background-color: #162938;
       padding: 15px 30px 15px 30px;
+      position: absolute;
+      bottom: 50px;
     }
   }
 `;

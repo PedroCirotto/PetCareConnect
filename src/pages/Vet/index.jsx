@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import React, { useState, useEffect } from "react";
 
 const Hero = styled.main`
   margin-top: 10rem;
@@ -16,7 +16,8 @@ const FormularioCadastro = styled.div`
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   column-gap: 110px;
   max-width: 90vw;
-  margin: 40px auto 50px auto;
+  margin: auto;
+  margin-top: 13%;
   padding: 20px;
   backdrop-filter: blur(10px);
 `;
@@ -43,6 +44,7 @@ const Input = styled.input`
   outline: none;
   border-radius: 5px;
   border: 1px solid #ccc;
+  margin-bottom: 5px;
 `;
 
 const Button = styled.button`
@@ -70,26 +72,36 @@ const Img = styled.img`
   border-bottom-right-radius: 10px;
 `;
 
-const Table = styled.ul`
+const Table = styled.table`
   margin: 1rem auto;
-  width: 500px;
+  width: 90vw;
+  border-collapse: collapse;
   border-radius: 10px;
-
-  thead {
-    background-color: rgb(40, 175, 130);
-    color: #fff;
-  }
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
 
   th,
   td {
-    padding: 8px;
-    text-align: left;
+    padding: 12px;
     border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: rgb(40, 175, 130);
+    color: #fff;
   }
 
   tr:hover {
     background-color: #f5f5f5;
   }
+
+  button {
+    margin-right: 10px;
+  }
+`;
+
+const H2 = styled.h2`
+  text-align: center;
+  margin-top: 2rem;
 `;
 
 function Vet() {
@@ -101,10 +113,11 @@ function Vet() {
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
   const [endereco, setEndereco] = useState("");
+  const [editingVet, setEditingVet] = useState(null);
 
   const fetchVeterinarios = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/veterinarios");
+      const response = await axios.get("http://localhost:3001/veterinario");
       setVeterinarios(response.data);
     } catch (error) {
       console.error("Erro ao buscar veterinários:", error);
@@ -117,8 +130,15 @@ function Vet() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Verifica se o campo nome está vazio
+    if (!nome) {
+      console.error("O campo nome não pode estar vazio.");
+      return;
+    }
+
     const newVet = {
-      nome,
+      nomeVeterinario: nome, // Atualizado para corresponder ao backend
       especialidade,
       telefone,
       email,
@@ -126,12 +146,52 @@ function Vet() {
       cpf,
       endereco,
     };
+
     try {
-      await axios.post("http://localhost:3001/veterinarios", newVet);
+      if (editingVet) {
+        await axios.put(
+          `http://localhost:3001/veterinario/${editingVet.id}`,
+          newVet
+        );
+      } else {
+        await axios.post("http://localhost:3001/veterinario", newVet);
+      }
+      fetchVeterinarios();
+      resetForm();
+    } catch (error) {
+      console.error("Erro ao salvar veterinário:", error);
+    }
+  };
+
+  const handleEdit = (vet) => {
+    setEditingVet(vet);
+    setNome(vet.nome);
+    setEspecialidade(vet.especialidade);
+    setTelefone(vet.telefone);
+    setEmail(vet.email);
+    setCrmv(vet.crmv);
+    setCpf(vet.cpf);
+    setEndereco(vet.endereco);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/veterinario/${id}`);
       fetchVeterinarios();
     } catch (error) {
-      console.error("Erro ao cadastrar veterinário:", error);
+      console.error("Erro ao deletar veterinário:", error);
     }
+  };
+
+  const resetForm = () => {
+    setEditingVet(null);
+    setNome("");
+    setEspecialidade("");
+    setTelefone("");
+    setEmail("");
+    setCrmv("");
+    setCpf("");
+    setEndereco("");
   };
 
   return (
@@ -150,13 +210,16 @@ function Vet() {
                   clientes.
                 </p>
                 <legend>
-                  <h1>Cadastro Veterinário</h1>
+                  <h1>
+                    {editingVet ? "Editar Veterinário" : "Cadastro Veterinário"}
+                  </h1>
                 </legend>
                 <Label htmlFor="nome_usuario">Nome Completo:</Label>
                 <Input
                   type="text"
                   id="nome_usuario"
                   name="nome_usuario"
+                  value={nome}
                   onChange={(e) => setNome(e.target.value)}
                   required
                 />
@@ -165,6 +228,7 @@ function Vet() {
                   type="email"
                   id="email_usuario"
                   name="email_usuario"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
@@ -173,6 +237,7 @@ function Vet() {
                   type="tel"
                   id="telefone_usuario"
                   name="telefone_usuario"
+                  value={telefone}
                   onChange={(e) => setTelefone(e.target.value)}
                   required
                 />
@@ -181,6 +246,7 @@ function Vet() {
                   type="text"
                   id="crm"
                   name="crm"
+                  value={crmv}
                   onChange={(e) => setCrmv(e.target.value)}
                 />
                 <Label htmlFor="especialidades">Especialidades:</Label>
@@ -188,6 +254,7 @@ function Vet() {
                   type="text"
                   id="especialidades"
                   name="especialidades"
+                  value={especialidade}
                   onChange={(e) => setEspecialidade(e.target.value)}
                 />
                 <Label htmlFor="cpf">CPF:</Label>
@@ -195,6 +262,7 @@ function Vet() {
                   type="text"
                   id="cpf"
                   name="cpf"
+                  value={cpf}
                   required
                   onChange={(e) => setCpf(e.target.value)}
                 />
@@ -203,13 +271,22 @@ function Vet() {
                   type="text"
                   id="endereco_usuario"
                   name="endereco_usuario"
+                  value={endereco}
                   required
                   onChange={(e) => setEndereco(e.target.value)}
                 />
-                <Label htmlFor="documentos">Documentos comprobatórios:</Label>
-                <Input type="file" id="documentos" name="documentos" />
+                <Button type="submit">
+                  {editingVet ? "Atualizar" : "Cadastrar"}
+                </Button>
+                {editingVet && (
+                  <Button
+                    onClick={resetForm}
+                    style={{ backgroundColor: "#f44336" }}
+                  >
+                    Cancelar
+                  </Button>
+                )}
               </FormFieldset>
-              <Button type="submit">Cadastrar</Button>
             </form>
             <Img
               src="imgs/pexels-tima-miroshnichenko-6235233.jpg"
@@ -218,7 +295,7 @@ function Vet() {
           </FormularioCadastro>
         </section>
       </Hero>
-      <h2>Veterinários Cadastrados</h2>
+      <H2>Veterinários Cadastrados</H2>
       <Table>
         <thead>
           <tr>
@@ -226,9 +303,10 @@ function Vet() {
             <th>Especialidade</th>
             <th>Telefone</th>
             <th>Email</th>
-            <th>Cpf</th>
+            <th>CPF</th>
             <th>Endereço</th>
             <th>CRMV</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -241,6 +319,15 @@ function Vet() {
               <td>{vet.cpf}</td>
               <td>{vet.endereco}</td>
               <td>{vet.crmv}</td>
+              <td>
+                <Button onClick={() => handleEdit(vet)}>Editar</Button>
+                <Button
+                  onClick={() => handleDelete(vet.id)}
+                  style={{ backgroundColor: "#f44336" }}
+                >
+                  Excluir
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>

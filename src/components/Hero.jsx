@@ -7,7 +7,7 @@ const Heroo = styled.header`
   gap: 5rem;
   max-width: 1424px;
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 12%;
 `;
 
 const MainText = styled.div`
