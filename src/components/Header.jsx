@@ -13,6 +13,10 @@ const HeaderContainer = styled.header`
   background-color: rgb(40, 175, 130);
   z-index: 99;
   margin-bottom: 2rem;
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 const LogoImg = styled.img`
@@ -78,7 +82,9 @@ const Navigation = styled.nav`
 export default function Header() {
   return (
     <HeaderContainer>
-      <LogoImg src="imgs/echo (3).svg" alt="Logo" />
+      <a href="/">
+        <LogoImg src="imgs/echo (3).svg" alt="Logo" />
+      </a>
       <InputSearch
         type="search"
         id="campoPesquisa"

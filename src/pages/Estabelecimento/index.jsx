@@ -55,6 +55,7 @@ const TextArea = styled.textarea`
   outline: none;
   border-radius: 5px;
   border: 1px solid #ccc;
+  resize: none;
 `;
 
 const Button = styled.button`
@@ -93,6 +94,11 @@ const Table = styled.table`
   td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
+  }
+
+  td:last-child {
+    display: flex;
+    justify-content: center;
   }
 
   th {

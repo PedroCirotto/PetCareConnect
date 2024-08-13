@@ -86,6 +86,11 @@ const Table = styled.table`
     border-bottom: 1px solid #ddd;
   }
 
+  td:last-child {
+    display: flex;
+    justify-content: center;
+  }
+
   th {
     background-color: rgb(40, 175, 130);
     color: #fff;
@@ -266,6 +271,7 @@ function Vet() {
                   id="cpf"
                   name="cpf"
                   value={cpf}
+                  maxLength="11"
                   required
                   onChange={(e) => setCpf(e.target.value)}
                 />

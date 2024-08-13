@@ -132,6 +132,11 @@ const TableRow = styled.tr`
 
 const TableCell = styled.td`
   padding: 8px;
+
+  &:last-child {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const Buttonn = styled.button`
