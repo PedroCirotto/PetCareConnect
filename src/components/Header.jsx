@@ -89,6 +89,9 @@ const Navigation = styled.nav`
 
 // Componente React
 export default function Header() {
+  function redirectUrl() {
+    window.location.href = "/login";
+  }
   return (
     <HeaderContainer>
       <a href="/">
@@ -104,7 +107,9 @@ export default function Header() {
         <a href="/users">Users</a>
         <a href="#">Services</a>
         <a href="#">Contact</a>
-        <button className="btnLogin-popup">Login</button>
+        <button onClick={redirectUrl} className="btnLogin-popup">
+          Login
+        </button>
       </Navigation>
     </HeaderContainer>
   );

@@ -6,9 +6,15 @@ import { createGlobalStyle } from "styled-components";
 import Tutores from "./pages/Tutores";
 import Vet from "./pages/Vet";
 import Estabelecimento from "./pages/Estabelecimento";
+import Login from "./pages/Login";
 // import Users from "./pages/Users";
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --main-green: background-color: rgb(40, 175, 130);
+
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -26,6 +32,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/tutores" element={<Tutores />} />
           <Route path="/veterinario" element={<Vet />} />
           <Route path="/estabelecimento" element={<Estabelecimento />} />
