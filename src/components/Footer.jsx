@@ -10,6 +10,11 @@ const FooterContent = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   list-style: none;
   margin: 0 30px 6px 30px;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 `;
 
 const FooterRow = styled.div`

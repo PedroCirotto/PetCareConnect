@@ -42,6 +42,13 @@ const CadastrosCard = styled.div`
   column-gap: 20px;
   padding: 6px;
   margin: 20px 30px 40px 30px;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 `;
 
 const MainCadastro = styled.div`
@@ -50,7 +57,7 @@ const MainCadastro = styled.div`
   flex-direction: column;
   align-items: center;
   height: 800px;
-  width: 90%;
+  width: 100%;
   border-radius: 7px;
   background-color: #28af82;
 

@@ -6,7 +6,14 @@ const Heroo = styled.header`
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   max-width: 1424px;
+  width: 100%;
   margin: 1rem auto;
+  padding: 0 2rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 `;
 
 const MainText = styled.div`
@@ -47,7 +54,8 @@ const MainText = styled.div`
 
     text-decoration: none;
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 1.1rem;
+    width: 100%;
   }
 
   a:hover {
@@ -59,7 +67,7 @@ const MainBanner = styled.div`
   img {
     object-fit: cover;
     height: 414px;
-    width: 590px;
+    width: 100%;
     border-radius: 23px;
   }
 `;

@@ -13,9 +13,14 @@ const HeaderContainer = styled.header`
   background-color: rgb(40, 175, 130);
   z-index: 99;
   margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;
   @media screen and (max-width: 900px) {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: row;
   }
 `;
 
@@ -27,7 +32,7 @@ const LogoImg = styled.img`
 `;
 
 const InputSearch = styled.input`
-  width: 650px;
+  width: 65%;
   height: 2.25rem;
   user-select: none;
   box-sizing: content-box;
@@ -75,6 +80,10 @@ const Navigation = styled.nav`
       color: #162938;
       transform: translateY(-5px);
     }
+  }
+
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;
 
