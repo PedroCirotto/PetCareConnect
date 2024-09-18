@@ -104,7 +104,7 @@ export default function Header() {
       />
       <Navigation>
         <a href="/">Home</a>
-        <a href="/users">Users</a>
+        <a href="/cadastros">Cadastros</a>
         <a href="#">Services</a>
         <a href="#">Contact</a>
         <button onClick={redirectUrl} className="btnLogin-popup">

@@ -1,70 +1,73 @@
-import styled from "styled-components";
+import { useState } from "react";
+import { FaUser, FaLock } from "react-icons/fa";
+//import { Link } from 'react-router-dom';
 import "./login.css";
-function Login() {
+import styled from "styled-components";
+
+const Main = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgb(40, 175, 130);
+`;
+
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    console.log("Dados de Login: ", { username, password });
+  };
+
   return (
-    <>
-      <div class="limiter">
-        <div class="container-login100">
-          <div class="wrap-login100">
-            <div class="login100-pic js-tilt" data-tilt>
-              <img src="imgs/echo (3) copy.svg" alt="IMG"></img>
-            </div>
-            <form class="login100-form validate-form">
-              <span class="login100-form-title">Member Login</span>
-              <div
-                class="wrap-input100 validate-input"
-                data-validate="Valid email is required: ex@abc.xyz"
-              >
-                <input
-                  class="input100"
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                ></input>
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-              </div>
-              <div
-                class="wrap-input100 validate-input"
-                data-validate="Password is required"
-              >
-                <input
-                  class="input100"
-                  type="password"
-                  name="pass"
-                  placeholder="Password"
-                ></input>
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-lock" aria-hidden="true"></i>
-                </span>
-              </div>
-              <div class="container-login100-form-btn">
-                <button class="login100-form-btn">Login</button>
-              </div>
-              <div class="text-center p-t-12">
-                <span class="txt1">Forgot</span>
-                <a class="txt2" href="#">
-                  Username / Password?
-                </a>
-              </div>
-              <div class="text-center p-t-136">
-                <a class="txt2" href="#">
-                  Create your Account
-                  <i
-                    class="fa fa-long-arrow-right m-l-5"
-                    aria-hidden="true"
-                  ></i>
-                </a>
-              </div>
-            </form>
+    <Main>
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <h1>Acesse sua conta</h1>
+          <div className="input-field">
+            <input
+              type="email"
+              placeholder="E-mail"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <FaUser className="icon" />
           </div>
-        </div>
+
+          <div className="input-field">
+            <input
+              type="password"
+              placeholder="Senha"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <FaLock className="icon" />
+          </div>
+
+          <div className="recall-forget">
+            <label>
+              <input type="checkbox" />
+              Lembre de mim
+            </label>
+            <a href="#">Esqueceu a senha?</a>
+          </div>
+
+          <button type="submit">Entrar</button>
+
+          <div className="signup-link">
+            <p>
+              Não tem uma conta? <a href="/signup">Registar</a>{" "}
+            </p>
+          </div>
+        </form>
       </div>
-    </>
+    </Main>
   );
-}
+};
 
 export default Login;

@@ -7,6 +7,7 @@ import Tutores from "./pages/Tutores";
 import Vet from "./pages/Vet";
 import Estabelecimento from "./pages/Estabelecimento";
 import Login from "./pages/Login";
+import Cadastros from "./pages/Cadastros";
 // import Users from "./pages/Users";
 
 const GlobalStyle = createGlobalStyle`
@@ -36,6 +37,7 @@ function App() {
           <Route path="/tutores" element={<Tutores />} />
           <Route path="/veterinario" element={<Vet />} />
           <Route path="/estabelecimento" element={<Estabelecimento />} />
+          <Route path="/cadastros" element={<Cadastros />} />
           {/* <Route path="/users" element={<Users />} /> */}
         </Routes>
       </BrowserRouter>

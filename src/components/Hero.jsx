@@ -72,32 +72,78 @@ const MainBanner = styled.div`
   }
 `;
 
+const PetContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  max-width: 1424px;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 0 2rem;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+`;
+
+const PetImg = styled.img`
+  object-fit: cover;
+  height: 414px;
+  width: 100%;
+  border-radius: 23px;
+`;
+
 export default function Hero() {
   return (
-    <Heroo>
-      <MainText>
-        <h1>Centro Veterinario PetCare</h1>
-        <p>
-          Bem-vindo ao Centro Veterinário PetCare. Aqui, cuidamos dos seus
-          animais de estimação com carinho e dedicação.
-        </p>
-        <p>
-          Nosso compromisso é proporcionar cuidados de saúde excepcionais para
-          os animais, promovendo seu bem-estar e felicidade. Nos esforçamos para
-          ser líderes na prestação de serviços veterinários de qualidade.
-        </p>
-        <div className="main-patch">
-          <object
-            data="imgs/veterinarian-svgrepo-com.svg"
-            type="image/svg+xml"
-            className="patch-img"
-          ></object>
-        </div>
-        <a href="#">Conheça nossos serviços</a>
-      </MainText>
-      <MainBanner>
-        <img src="imgs/Veterinarian-Best-Wallpaper.jpg" alt=""></img>
-      </MainBanner>
-    </Heroo>
+    <>
+      <Heroo>
+        <MainText>
+          <h1>Centro Veterinario PetCare</h1>
+          <p>
+            Bem-vindo ao Centro Veterinário PetCare. Aqui, cuidamos dos seus
+            animais de estimação com carinho e dedicação.
+          </p>
+          <p>
+            Nosso compromisso é proporcionar cuidados de saúde excepcionais para
+            os animais, promovendo seu bem-estar e felicidade. Nos esforçamos
+            para ser líderes na prestação de serviços veterinários de qualidade.
+          </p>
+          <div className="main-patch">
+            <object
+              data="imgs/veterinarian-svgrepo-com.svg"
+              type="image/svg+xml"
+              className="patch-img"
+            ></object>
+          </div>
+          <a href="#">Conheça nossos serviços</a>
+        </MainText>
+        <MainBanner>
+          <img src="imgs/Veterinarian-Best-Wallpaper.jpg" alt=""></img>
+        </MainBanner>
+      </Heroo>
+      <PetContainer>
+        <PetImg src="imgs/dog.jpg" alt=""></PetImg>
+        <MainText>
+          <p>
+            O Centro Veterinário PetCare é uma clínica especializada em cuidados
+            médicos para animais de estimação, oferecendo uma gama completa de
+            serviços voltados para a saúde e bem-estar dos pets. Com uma equipe
+            de profissionais altamente capacitados, o PetCare se destaca por seu
+            atendimento humanizado e por utilizar tecnologia de ponta em
+            diagnósticos e tratamentos. Entre os principais serviços oferecidos
+            pelo Centro Veterinário PetCare estão consultas de rotina, vacinas,
+            exames laboratoriais, cirurgias, atendimento de emergência e
+            acompanhamento nutricional. A clínica também conta com um espaço
+            confortável para internações e recuperação dos animais, garantindo o
+            máximo de conforto e segurança. O foco do PetCare é proporcionar um
+            ambiente acolhedor tanto para os pets quanto para seus tutores,
+            assegurando que cada paciente receba o tratamento adequado para suas
+            necessidades individuais.
+          </p>
+        </MainText>
+      </PetContainer>
+    </>
   );
 }
