@@ -8,7 +8,7 @@ const HeaderContainer = styled.header`
   align-items: center;
 
   width: 100%;
-  padding: 9px 10px;
+  padding: 9px 2rem;
   height: 12%;
   background-color: rgb(40, 175, 130);
   z-index: 99;
@@ -29,22 +29,6 @@ const LogoImg = styled.img`
   margin-top: 10px;
   width: auto;
   object-fit: cover;
-`;
-
-const InputSearch = styled.input`
-  width: 65%;
-  height: 2.25rem;
-  user-select: none;
-  box-sizing: content-box;
-  outline: none;
-  border: none;
-  border-radius: 16px;
-  padding: 10px;
-
-  &::placeholder {
-    font-weight: 400;
-    line-height: 132%;
-  }
 `;
 
 const Navigation = styled.nav`
@@ -87,6 +71,26 @@ const Navigation = styled.nav`
   }
 `;
 
+const Hamburguer = styled.div`
+  display: none;
+  cursor: pointer;
+  border-radius: 50%;
+
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
+
+  span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 100px;
+  }
+`;
+
 // Componente React
 export default function Header() {
   function redirectUrl() {
@@ -97,20 +101,20 @@ export default function Header() {
       <a href="/">
         <LogoImg src="imgs/echo (3).svg" alt="Logo" />
       </a>
-      <InputSearch
-        type="search"
-        id="campoPesquisa"
-        placeholder="Como podemos te ajudar?"
-      />
       <Navigation>
         <a href="/">Home</a>
         <a href="/cadastros">Cadastros</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
+        <a href="/servicos">Serviços</a>
+        <a href="#">Contato</a>
         <button onClick={redirectUrl} className="btnLogin-popup">
           Login
         </button>
       </Navigation>
+      <Hamburguer>
+        <span></span>
+        <span></span>
+        <span></span>
+      </Hamburguer>
     </HeaderContainer>
   );
 }

@@ -7,6 +7,7 @@ import Tutores from "./pages/Tutores";
 import Vet from "./pages/Vet";
 import Estabelecimento from "./pages/Estabelecimento";
 import Login from "./pages/Login";
+import Servicos from "./pages/Servicos";
 import Cadastros from "./pages/Cadastros";
 // import Users from "./pages/Users";
 
@@ -23,7 +24,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     vertical-align: baseline;
   }
-
 `;
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
           <Route path="/veterinario" element={<Vet />} />
           <Route path="/estabelecimento" element={<Estabelecimento />} />
           <Route path="/cadastros" element={<Cadastros />} />
+          <Route path="/servicos" element={<Servicos />} />
           {/* <Route path="/users" element={<Users />} /> */}
         </Routes>
       </BrowserRouter>

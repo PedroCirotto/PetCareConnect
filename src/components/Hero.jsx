@@ -32,6 +32,7 @@ const MainText = styled.div`
     font-weight: 500;
     width: 100%;
     margin-top: 20px;
+    line-height: 30px;
   }
 
   .patch-img {
@@ -126,7 +127,7 @@ export default function Hero() {
       <PetContainer>
         <PetImg src="imgs/dog.jpg" alt=""></PetImg>
         <MainText>
-          <p>
+          <p style={{ lineHeight: "30px" }}>
             O Centro Veterinário PetCare é uma clínica especializada em cuidados
             médicos para animais de estimação, oferecendo uma gama completa de
             serviços voltados para a saúde e bem-estar dos pets. Com uma equipe

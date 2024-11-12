@@ -1,6 +1,7 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
+import WhatsZap from "../../components/WhatsZap";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
         <Hero />
       </main>
       <Footer />
+      <WhatsZap />
     </>
   );
 }
