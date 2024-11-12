@@ -29,6 +29,7 @@ const LogoImg = styled.img`
   margin-top: 10px;
   width: auto;
   object-fit: cover;
+  z-index: 999;
 `;
 
 const Navigation = styled.nav`
@@ -69,12 +70,19 @@ const Navigation = styled.nav`
   @media screen and (max-width: 500px) {
     display: none;
   }
+
+  transition: all 0.3s ease;
+
 `;
 
 const Hamburguer = styled.div`
   display: none;
   cursor: pointer;
   border-radius: 50%;
+  z-index: 999;
+  transition: all 0.3s ease;
+
+
 
   @media screen and (max-width: 500px) {
     display: block;
@@ -91,10 +99,63 @@ const Hamburguer = styled.div`
   }
 `;
 
+const MobileNavigation = styled.div`
+  transition: all 0.3s ease;
+
+  display: none;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
+    width: 80%;
+    height: 90vh;
+    background-color: rgb(50, 85, 73);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    transition: all 0.3s ease;
+
+    a {
+      font-size: 2rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+  }
+
+  .btnLogin-popup {
+    width: 130px;
+    height: 55px;
+    text-align: center;
+    color: rgb(10, 107, 75);
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      background: #fff;
+      color: #162938;
+      transform: translateY(-5px);
+    }
+  }
+`;
+
 // Componente React
 export default function Header() {
   function redirectUrl() {
     window.location.href = "/login";
+  }
+
+  function toggleMenu() {
+    const mobileNavigation = document.querySelector(".mobile-navigation");
+    mobileNavigation.style.display = mobileNavigation.style.display === "flex" ? "none" : "flex";
   }
   return (
     <HeaderContainer>
@@ -110,11 +171,21 @@ export default function Header() {
           Login
         </button>
       </Navigation>
-      <Hamburguer>
+      
+      <Hamburguer onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>
       </Hamburguer>
+      <MobileNavigation className='mobile-navigation'>
+      <a href="/">Home</a>
+        <a href="/cadastros">Cadastros</a>
+        <a href="/servicos">Serviços</a>
+        <a href="#">Contato</a>
+        <button onClick={redirectUrl} className="btnLogin-popup">
+          Login
+        </button>
+      </MobileNavigation>
     </HeaderContainer>
   );
 }
