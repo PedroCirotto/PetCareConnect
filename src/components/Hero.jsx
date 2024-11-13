@@ -62,6 +62,23 @@ const MainText = styled.div`
   a:hover {
     background-color: #162938;
   }
+
+  @media screen and (max-width: 425px) {
+    a {
+      padding: 20px 50px 20px 71px;
+      font-size: 1.2rem;
+    }
+    }
+
+    .patch-img{
+      height: 122px;
+      position: relative;
+      z-index: 1;
+      margin: 40px 10px 31px 0;
+      left: -29px;
+      top: -15px;
+    }
+  }
 `;
 
 const MainBanner = styled.div`
@@ -116,9 +133,10 @@ export default function Hero() {
               data="imgs/veterinarian-svgrepo-com.svg"
               type="image/svg+xml"
               className="patch-img"
+              aria-labelledby="patch"
             ></object>
           </div>
-          <a href="#">Conheça nossos serviços</a>
+          <a href="/servicos">Conheça nossos serviços</a>
         </MainText>
         <MainBanner>
           <img src="imgs/Veterinarian-Best-Wallpaper.jpg" alt=""></img>

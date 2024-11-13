@@ -38,7 +38,7 @@ const Navigation = styled.nav`
 
   a {
     position: relative;
-    font-size: 1rem;
+    font-size: 1.4rem;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
@@ -109,7 +109,7 @@ const MobileNavigation = styled.div`
   padding-left: 1rem;
     width: 80%;
     height: 90vh;
-    background-color: rgb(50, 85, 73);
+    background-color: rgb(40, 175, 130);
     position: absolute;
     top: 0;
     right: 0;

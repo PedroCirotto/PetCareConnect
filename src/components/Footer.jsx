@@ -27,12 +27,14 @@ const FooterRow = styled.div`
     flex-direction: column;
     gap: 1rem;
     margin-top: 0.5rem;
+    list-style: none;
   }
 
   a {
-    color: rgb(83, 79, 79);
+    color: rgb(43, 43, 43);
     list-style: none;
     text-decoration: none;
+    font-family: 700;
   }
 
   a:hover {
@@ -76,76 +78,48 @@ function Footer() {
           <FooterRow class="footer-row">
             <h2>Sobre nós</h2>
             <ul>
-              <a href="#">
-                <li>Nossa empresa</li>
-              </a>
-              <a href="#">
-                <li>Nossos serviços</li>
-              </a>
-              <a href="#">
-                <li>Atendimento ao cliente</li>
-              </a>
-              <a href="#">
-                <li>Compliance e Privacidade</li>
-              </a>
-              <a href="#">
-                <li>Código de Ética e Conduta</li>
-              </a>
+              <li><a href="#">Nossa empresa</a></li>
+              <li><a href="#">Nossos serviços</a></li>
+              <li><a href="#">Atendimento ao cliente</a></li>
+              <li><a href="#">Compliance e Privacidade</a></li>
+              <li><a href="#">Código de Ética e Conduta</a></li>
             </ul>
           </FooterRow>
           <FooterRow class="footer-row">
             <h2>Carreiras</h2>
             <ul>
-              <a href="#">
-                <li>Central de carreiras</li>
-              </a>
-              <a href="#">
-                <li>Trabalhe conosco</li>
-              </a>
+                <li><a href="#">Central de carreiras</a></li>
+                <li><a href="#">Trabalhe conosco</a></li>              
             </ul>
           </FooterRow>
           <FooterRow class="footer-row">
             <h2>Impacto social</h2>
             <ul>
-              <a href="#">
-                <li>Comunidade</li>
-              </a>
-              <a href="#">
-                <li>Meio ambiente</li>
-              </a>
-              <a href="#">
-                <li>Fornecimento ético</li>
-              </a>
-              <a href="#">
-                <li>Conexão com clientes</li>
-              </a>
+              <li><a href="#">Comunidade</a></li>              
+              <li><a href="#">Meio ambiente</a></li>              
+              <li><a href="#">Fornecimento ético</a></li>              
+              <li><a href="#">Conexão com clientes</a></li>                            
             </ul>
           </FooterRow>
           <FooterRow class="footer-row">
             <h2>PetCare:Connect vínculos</h2>
             <ul>
-              <a href="#">
-                <li>Termos & Condições</li>
-              </a>
-              <a href="#">
-                <li>Termos & Condições dos vínculos</li>
-              </a>
-              <a href="#">
-                <li>Termos & Condições do atendimento</li>
-              </a>
+              <li><a href="#">Termos & Condições</a></li>                            
+              <li><a href="#">Termos & Condições dos vínculos</a></li>                            
+              <li><a href="#">Termos & Condições do atendimento</a></li>                                          
             </ul>
           </FooterRow>
         </FooterContent>
         <HrLinha class="hr-linha" aria-hidden="true" />
         <SocialMediaIcons class="social-media-icons">
-          <a href="#">
-            <img src="imgs/facebook.png" alt="" />
+          <a href="#" aria-label="Facebook">
+            <img src="imgs/facebook.png" alt="Facebook" />
           </a>
-          <a href="#">
-            <img src="imgs/instagram.png" alt="" />
+          <a href="#" aria-label="Instagram">
+            <img src="imgs/instagram.png" alt="Instagram" />
           </a>
-          <a href="#">
-            <img src="imgs/twitter.png" alt="" />
+          <a href="#" aria-label="Twitter">
+            <img src="imgs/twitter.png" alt="Twitter" />
           </a>
         </SocialMediaIcons>
         <FooterCopy class="footer-copyright">

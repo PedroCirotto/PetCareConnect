@@ -21,7 +21,7 @@ const Container = styled.div`
 function WhatsZap() {
   return (
     <Container>
-      <a href="https://helenapetcare-bot.tg.pulse.is" target="blank">
+      <a href="https://helenapetcare-bot.tg.pulse.is" target="blank" aria-label="Telegram">
         <FaTelegram className="telegram" />
       </a>
     </Container>
