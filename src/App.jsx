@@ -1,15 +1,24 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Home from "./pages/Home";
-
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, AuthContext } from "./backend/AuthContext.jsx";
+import { useContext } from "react";
 import { createGlobalStyle } from "styled-components";
-import Tutores from "./pages/Tutores";
-import Vet from "./pages/Vet";
-import Estabelecimento from "./pages/Estabelecimento";
-import Login from "./pages/Login";
-import Servicos from "./pages/Servicos";
-import Cadastros from "./pages/Cadastros";
-// import Users from "./pages/Users";
+
+import Home from "./pages/PublicRoutes/Home";
+import Tutores from "./pages/PublicRoutes/Tutores";
+import Vet from "./pages/PublicRoutes/Vet";
+import Estabelecimento from "./pages/PublicRoutes/Estabelecimento";
+import Login from "./pages/PublicRoutes/Login/index.jsx";
+import Register from "./pages/PublicRoutes/Register/index.jsx";
+import Servicos from "./pages/PublicRoutes/Servicos";
+import Cadastros from "./pages/PublicRoutes/Cadastros";
+
+// Private Routes
+const PrivateRoute = ({ children }) => {
+  const { user } = useContext(AuthContext);
+  return user ? children : <Navigate to="/login" />;
+};
+
+import Dashboard from "./pages/Private/Dashboard";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -34,11 +43,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/tutores" element={<Tutores />} />
           <Route path="/veterinario" element={<Vet />} />
           <Route path="/estabelecimento" element={<Estabelecimento />} />
           <Route path="/cadastros" element={<Cadastros />} />
           <Route path="/servicos" element={<Servicos />} />
+          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           {/* <Route path="/users" element={<Users />} /> */}
         </Routes>
       </BrowserRouter>

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
-//import { Link } from 'react-router-dom';
 import "./login.css";
+import { AuthContext, AuthProvider } from "../../../backend/AuthContext.jsx";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Main = styled.main`
   display: flex;
@@ -12,28 +13,40 @@ const Main = styled.main`
   background-color: rgb(40, 175, 130);
 `;
 
-const Login = () => {
-  const [username, setUsername] = useState("");
+const Register = () => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { register } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("Dados de Register: ", { email, password });
 
-    console.log("Dados de Login: ", { username, password });
+
+    try {
+      await register(email, password);
+      navigate("/dashboard");
+      alert('Usuario criado com sucesso.')
+    } catch (error) {
+      console.error("Erro no cadastro", error);
+      alert('Erro no cadastro')
+    }
+    
   };
 
   return (
     <Main>
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <h1>Acesse sua conta</h1>
+          <h1>Crie sua conta!</h1>
           <div className="input-field">
             <input
               type="email"
               placeholder="E-mail"
               required
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <FaUser className="icon" />
           </div>
@@ -49,19 +62,12 @@ const Login = () => {
             <FaLock className="icon" />
           </div>
 
-          <div className="recall-forget">
-            <label>
-              <input type="checkbox" />
-              Lembre de mim
-            </label>
-            <a href="#">Esqueceu a senha?</a>
-          </div>
 
           <button type="submit">Entrar</button>
 
           <div className="signup-link">
             <p>
-              Não tem uma conta? <a href="/signup">Registar</a>{" "}
+              Ja tem uma conta? <a href="/login">Login</a>{" "}
             </p>
           </div>
         </form>
@@ -70,4 +76,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
