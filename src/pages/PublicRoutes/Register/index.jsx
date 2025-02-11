@@ -4,6 +4,22 @@ import "./login.css";
 import { AuthContext, AuthProvider } from "../../../backend/AuthContext.jsx";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 const Main = styled.main`
   display: flex;
@@ -32,11 +48,24 @@ const Register = () => {
       console.error("Erro no cadastro", error);
       alert('Erro no cadastro')
     }
-    
+
   };
 
   return (
     <Main>
+      <Dialog>
+        <DialogTrigger>Open</DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your account
+              and remove your data from our servers.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
       <div className="container">
         <form onSubmit={handleSubmit}>
           <h1>Crie sua conta!</h1>
@@ -63,7 +92,7 @@ const Register = () => {
           </div>
 
 
-          <button type="submit">Entrar</button>
+          <button className="bg-amber-400" type="submit">Entrar</button>
 
           <div className="signup-link">
             <p>
@@ -72,6 +101,15 @@ const Register = () => {
           </div>
         </form>
       </div>
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
     </Main>
   );
 };
