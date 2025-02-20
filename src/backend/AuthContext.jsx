@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const AuthContext = createContext();
@@ -8,38 +9,59 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        if (token) {
+        const storedUser = localStorage.getItem("user");
+
+        if (token && storedUser) {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-            setUser(true);
+            setUser(JSON.parse(storedUser));
         }
     }, []);
 
-    const register = async(email, password) => {
+    const register = async (email, password, first_name, last_name, gender, phone, cpf) => {
         try {
-            const { data } = await axios.post("http://localhost:5000/register", { email, password });
-            console.log(data)
+            const { data } = await axios.post("http://localhost:5000/register", { 
+                email, password, first_name, last_name, gender, phone, cpf 
+            });
+
+            if (!data || !data.token) {
+                throw new Error("Resposta inválida do servidor.");
+            }
+
             localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
             axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
-            setUser(true);
+            setUser(data.user);
         } catch (error) {
             console.error("Erro no cadastro", error);
+            throw error.response?.data?.message || "Erro ao cadastrar. Tente novamente.";
         }
-    }
+    };
 
     const login = async (email, password) => {
         try {
             const { data } = await axios.post("http://localhost:5000/login", { email, password });
-            console.log(data)
+
+            if (!data || !data.token) {
+                throw new Error("Credenciais inválidas ou resposta inesperada do servidor.");
+            }
+
             localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
             axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
-            setUser(true);
+            setUser(data.user);
+
+            return { success: true, user: data.user };
         } catch (error) {
-            console.error("Erro no login", error);
+            console.error("Erro no login:", error);
+
+            const errorMessage = error.response?.data?.message || "Erro ao realizar login. Verifique suas credenciais.";
+            return { success: false, message: errorMessage };
         }
     };
 
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         delete axios.defaults.headers.common["Authorization"];
         setUser(null);
     };
@@ -50,4 +72,3 @@ export const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
-
