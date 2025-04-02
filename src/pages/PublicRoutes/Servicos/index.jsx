@@ -4,13 +4,14 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import WhatsZap from "../../../components/WhatsZap";
 import Ra from "../../../components/Ra";
+import GoogleMaps from "@/components/GoogleMaps";
 
 function Cadastros() {
   return (
     <>
       <Header />
-      <CardServico />
-      <Ra/>
+      <GoogleMaps/>
+      <Ra />
       <Footer />
       <WhatsZap />
     </>

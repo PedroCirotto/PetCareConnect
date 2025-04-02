@@ -9,8 +9,16 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AuthContext } from "../../../backend/AuthContext.jsx"
+import { useContext } from "react"
 
 export default function Page() {
+  const getUser = () => {
+    const { getUsers } = useContext(AuthContext);
+    return getUsers
+  }
+
+  console.log(getUser())
   return (
     <SidebarProvider>
       <AppSidebar />

@@ -59,6 +59,16 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const getUsers = async () => {
+        try {
+            const { data } = await axios.get("http://localhost:5000/users")
+            localStorage.setItem("users", JSON.stringify(data));
+            console.log(data)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
@@ -67,7 +77,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, register, logout }}>
+        <AuthContext.Provider value={{ user, login, register, logout, getUsers }}>
             {children}
         </AuthContext.Provider>
     );
