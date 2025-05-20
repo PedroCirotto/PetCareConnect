@@ -15,6 +15,8 @@ import Cadastros from "./pages/PublicRoutes/Cadastros";
 
 // Páginas privadas
 import Dashboard from "./pages/Private/Dashboard";
+import Blogcachorro from "./pages/PublicRoutes/Blogcachorro/index.jsx";
+import Agendar from "./pages/Private/Agendar/index.jsx";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -31,13 +33,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const PrivateRoute = ({ children }) => {
-  const { user } = useContext(AuthContext); // Usa o contexto corretamente
+  const user = localStorage.getItem("user");
   return user ? children : <Navigate to="/login" replace />;
 };
 
 const RedirectToDashBoard = ({ children }) => {
   const { user } = useContext(AuthContext);
-  return user ? <Navigate to="/dashboard"/> : children
+  return user ? <Navigate to="/agendar"/> : children
 }
 
 function App() {
@@ -47,7 +49,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Rotas privadas */}
-          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+          <Route path="/agendar" element={<PrivateRoute><Agendar /></PrivateRoute>} />
           
           {/* Rotas públicas */}
           <Route path="/" element={<Home />} />
@@ -55,6 +57,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/tutores" element={<Tutores />} />
           <Route path="/veterinario" element={<Vet />} />
+          <Route path="/blogcachorro" element={<Blogcachorro />} />
           <Route path="/estabelecimento" element={<Estabelecimento />} />
           <Route path="/cadastros" element={<Cadastros />} />
           <Route path="/servicos" element={<Servicos />} />

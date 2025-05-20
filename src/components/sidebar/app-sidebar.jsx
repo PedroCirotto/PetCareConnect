@@ -24,12 +24,15 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
+const user = localStorage.getItem("user") || "{}";
+const userData = JSON.parse(user);
+console.log(userData);
 
 // This is sample data.
 const data = {
   user: {
     name: "shadcn",
-    email: "m@example.com",
+    email: userData.email || "example@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
   teams: [

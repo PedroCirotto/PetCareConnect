@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Care:Connect</title>
+    <link rel="icon" type="image/png" sizes="64x6" href="img/echo (3).svg">type="image/x-icon">
+    <link rel="stylesheet" href="estilos/style.css">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    vertical-align: baseline;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    min-height: 100vh;  
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100vw;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+   
+    padding: 9px 30px;
+    height: 19%;
+    background-color: #00A651;
+    z-index: 99;
+}
+
+header .logo-img{
+    height: 150px;
+    margin-top: 10px;
+    width: auto;
+    object-fit: cover;
+}
+
+header .input-search{
+    width: 600px;
+    height: 2.25rem;
+    user-select: none;
+    box-sizing: content-box;
+    outline: none;
+    border: none;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+header .input-search[placeholder]{
+    font-weight: 400;
+    line-height: 132%; 
+}
+
+header .navigation a{
+    position: relative;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+
+    font-weight: 500;
+    margin-left: 30px;
+}
+
+header .navigation .btnLogin-popup{
+    width: 100px;
+    height: 50px;
+    margin-left: 30px;
+
+    text-align: center;
+    color: #057751;
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 6px;
+
+    outline: none;
+    cursor: pointer;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    transition: transform 0.3s ease;
+}
+
+header .navigation .btnLogin-popup:hover{
+    background: #fff;
+    color: #175EA8;
+    transform: translateY(-5px);
+}
+
+main .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin: 10% 10px 0 20px;
+}
+
+main .hero .main-text h1{
+    font-size: 2rem;
+    font-weight: 900;
+    color:#175EA8;
+  
+    margin-top: 22px;
+    margin-bottom: 0.5rem;
+    padding: 0 10px 0 19px;
+}
+
+.nome-empresa{
+    font-size: 2rem;
+    color:#175EA8;
+    font-family: cursive;
+    font-weight: 900;
+    margin-top: 22px;
+    margin-bottom: 0.5rem;
+    padding: 0 10px 0 19px;
+}
+
+main .hero .main-text p{
+    font-size: 1.130rem;
+    text-align: justify;
+    color: rgb(40, 38, 38);
+    font-weight: 500;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 20px 0 20px;
+}
+
+main .hero .main-text .patch-img{
+    height: 165px;
+    position: relative;
+    z-index: 1;
+    margin: 40px 0 30px 0;
+    padding: 0 30px 0 30px;
+}
+
+main .hero .main-text a{
+    position: relative;
+    top: -25%;
+    left: 3%;
+
+    
+    border: 2px solid none;
+    border-radius: 14px;
+    background-color: #00A651;
+    padding: 40px 100px 40px 175px;
+    margin: 5px 0 30px 0;
+
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+main .hero .main-text a:hover{
+    background-color: #175EA8;
+   
+}
+
+main .hero .main-banner img{
+    object-fit: cover;
+    height: 414px;
+    width: 620px;
+    border-radius: 23px;
+}
+
+.container-atendimento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    background-color: #3582d5;
+    margin: 0 0 0 0;
+    padding: 40px;
+    flex-wrap: wrap;
+    height: 430px;
+}
+
+.text-atendimento {
+    flex: 1;
+    text-align: center;   
+}
+
+.text-atendimento h1 {
+    flex: 1;
+    font-size: 3rem;
+    margin: 0 0 30px 0;
+    color: #000;
+    text-align: center;   
+}
+
+.text-atendimento p {
+    font-size: 1.4rem;
+    color: #000;
+    margin: 40px 0 40px 0;
+    text-align: center;
+}
+
+.searchbox-atendimento {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 25px;
+    width: 100%;
+    text-align: center;   
+}
+
+.searchbox-atendimento input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.searchbox-atendimento button {
+    background: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.image-atendimento {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.image-atendimento img {
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+  
+.container-especialidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    margin: 10px 0 55px 0;
+    max-width: 100%;
+    background: #ffffff;
+    gap: 10px;
+}
+
+.container-especialidades h1 {
+    font-size: 2em;
+    letter-spacing: 0.5px;
+}
+
+.container-especialidades p{
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+.container-especialidades h1 span {
+    color: #3582D5;
+}
+
+.content-especialidades {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 30px;
+    width: 90%;
+    height: 100%;
+}
+
+.card-especialidade {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 20px;
+    margin: 20px 0 5px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.especialidade h2, .especialidade p {
+    flex-grow: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-especialidade h2{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin: 10px 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+.card-especialidade p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin: 30px 0 8px 0;
+}
+
+.card-especialidade img {
+    width: 50px;
+    height: 50px;
+    margin: 5px 0 15px 0;
+}
+
+.card-especialidade a {
+    display: block;
+    margin: 70px 0 10px 0;
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+
+.card-especialidade a:hover{
+    text-decoration: underline;
+}
+
+
+main .cadastro-informer{
+    margin: 5px 10px 5px 20px;
+   
+}
+
+main .cadastro-informer .title-cadastro h1{
+    font-size: 2rem;
+    font-weight: 900;
+    color:#175EA8;
+  
+    margin-top: 22px;
+    margin-bottom: 0.5rem;
+    padding: 0 10px 0 20px;
+}
+
+main .cadastro-informer .text-cadastro p{
+    text-align: justify;
+    font-size: 1.130rem;
+    font-weight: 500;
+    color: rgb(40, 38, 38);
+    margin-top: 20px;
+    padding: 5px 20px 5px 20px;
+    width: 100%;
+}
+
+main .container-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 7px;
+}
+
+main .container-card .cadastros-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    padding: 6px;
+    margin: 20px 30px 40px 30px;
+}
+
+main  .container-card  .cadastros-card .main-cadastro{
+    display: flex;
+    flex-direction: column;
+
+    height: 800px;
+    width: 90%;
+
+    border-radius: 7px;
+    background-color: #00A651;
+}
+
+main  .container-card  .cadastros-card .main-cadastro .img-card img{
+    height: 290px;
+    width: 100%;
+
+    object-fit: cover;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+main  .container-card  .cadastros-card .main-cadastro .patch-card img{
+    position: relative;
+    top: -55%;
+    left: 39.5%;
+    height: 90px;
+
+    border: 1px solid white;
+    background: #ffffff7e;
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    object-fit: cover;
+
+    z-index: 2;
+}
+
+main  .container-card  .cadastros-card .main-cadastro h1{
+    color: #162938;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.28rem;
+    font-weight: 600;
+    padding: 12px;
+    margin-bottom: 2px;
+}
+
+main .container-card  .cadastros-card .main-cadastro hr{
+    position: relative;
+    top: 0;
+    left: 2%;
+    width: 90%;
+    margin-bottom: 7px;
+    border-color: #1a1b1b83;
+    
+}
+
+main .container-card  .cadastros-card .main-cadastro p{
+    color:#ffffff;
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 12px;
+}
+
+main .container-card  .cadastros-card .main-cadastro .link-cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+main .container-card  .cadastros-card .main-cadastro .link-cadastro a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.4rem;
+    border: 1px solid #162938;
+    border-radius: 8px;
+    background-color: #162938;
+    padding: 15px 30px 15px 30px;
+}
+
+.AvisosDeCuidados{
+    margin:25px 12px 25px 12px;
+}
+
+.Container-avisos{
+    display: flex;
+    align-items: normal;
+    max-width: 900px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(50px);
+    padding: 20px; 
+}
+
+.content-avisos{
+    flex: 1;
+    padding: 10px 18px 10px 18px;
+    max-width: 100%;
+   
+}
+
+.h1-avisos{
+    color: #175EA8;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    
+}
+
+.p-avisos{
+    padding: 10px 0 10px 0;
+    font-size: 16px;
+    color: #000000;
+}
+
+.lista-avisos{  
+    padding: 10px 10px 10px 40px;
+    width: 620px;
+    border: 0.1px solid #00A651;
+    border-radius: 10px;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+.ul-avisos{
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    
+}
+
+.li-avisos{
+    font-size: 18px;
+    margin: 30.5px 0;
+}
+
+.imagem-aviso{
+  display: flex;
+  align-items: center;
+}
+
+.imagem-aviso > img{
+    height: 473px;
+    width: 750px;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.container-dicas {
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+    margin: 20px 0 70px 200px;    
+}
+
+.container-dicas h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 200px; 
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #175EA8;
+    margin-bottom: 20px;
+}
+
+.grid-dicas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 75px;
+    align-items: stretch; 
+}
+
+.card-dicas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 100%; 
+    width: 250px;
+    text-align: left;
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.card-dicas img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card-dicas h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    letter-spacing: 1px; 
+    margin: 20px 0 20px 0;
+}
+
+.card-dicas a {
+    color: blue;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin: 0 0 20px 0;
+    cursor: pointer;
+    
+}
+
+.card-dicas a:hover{
+    text-decoration: underline;
+    color: #1212ff;
+}
+
+.container-lembrete {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    max-width: 90%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    align-self: center; 
+    margin: auto;
+}
+
+.imagem-lembrete {
+    width: 100%;
+    height: 100%;
+}
+
+.imagem-lembrete img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.conteudo-lembrete {
+    padding: 30px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.conteudo-lembrete h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #175EA8;
+}
+
+.conteudo-lembrete p {
+    margin-bottom: 15px;
+    color: #272323;
+}
+
+.conteudo-lembrete h3 {
+    color: #175EA8;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.conteudo-lembrete ul {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.conteudo-lembrete ul li {
+    margin-bottom: 5px;
+}
+
+
+.botoes-lembrete {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.botao {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cachorro {
+    background: #ff4d4d;
+    color: white;
+}
+
+.gato {
+    background: #ff914d;
+    color: white;
+}
+
+.stickybottom-fixed {
+    position: fixed;
+    display: grid;
+    grid-template-columns: 1fr auto; 
+    flex-direction: column;
+    bottom: 0;
+    height: 70px;
+    width: 100%;
+    background: white;
+    box-shadow: 0px -4px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 13px 25px 5px 25px;
+    border-top: 2px solid #ccc;
+}
+
+.stickybottom-fixed  span{
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 30px 5px 30px;
+}
+
+.stickybottom-fixed p{
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 30px 5px 30px;
+}
+
+.stickybottom-fixed button {
+    background: #be1f1f;
+    color: white;
+    border: none;
+    padding: 5px 10px 10px 10px;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.stickybottom-fixed button:hover {
+    background: #fb012a;
+}
+
+footer{
+    background-color: #1629381e;
+    margin: 40px 0 50px 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    list-style: none;
+    margin: 0 30px 6px 30px;
+  }
+  
+  .footer-row {
+    margin-top: 40px;
+    font-size: 14px;
+    color: rgb(96, 90, 90);
+  }
+  
+  .footer-row a {
+    color: rgb(83, 79, 79);
+    list-style: none;
+    text-decoration: none;
+    padding: 5px;
+  }
+  
+  .footer-row a:hover {
+    color: black;
+  }
+  
+  .footer-row h2 {
+    color: #00A651;
+  }
+  
+  .hr-linha {
+    border: 1px solid #28af827b;
+    width: 96%;
+    margin: 20px auto;
+  }
+  
+  .social-media-icons a img {
+    display: inline-block;
+    padding: 10px;
+    margin: 0 30px 6px 30px;
+    height: 50px;
+    
+  }
+  
+  .social-media-icons img:hover {
+    transform: scale(1.2);
+  }
+  
+  .footer-copyright {
+    color: rgba(0, 0, 0, 0.56);
+    margin-top: 20px;
+  }
+    </style>
+</head>
+<body>
+    <header class="header-content">
+        <img src="img/echo (3).svg" alt="" class="logo-img">
+        <input type="search" id="campoPesquisa" class="input-search" placeholder="Como podemos te ajudar ?" >
+        <nav class="navigation">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Services</a>
+            <a href="">Contact</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="main-text">
+                <h1>Centro Veterinário <h2 class="nome-empresa">PetCare<h2></h1>
+                <p>Bem-vindo ao PetCare Connect! Somos o seu intermediário para encontrar veterinários online, estabelecimentos confiáveis e clínicas próximas em caso de emergência.</p>
+                <p>Nosso compromisso é conectar tutores a profissionais qualificados, garantindo o melhor cuidado para os animais de estimação com praticidade e segurança. Aqui, você encontra suporte para a saúde e o bem-estar do seu pet, quando e onde precisar.</p>
+                <div class="main-patch">
+                    <object data="img/veterinarian-svgrepo-com.svg" type="image/svg+xml" class="patch-img"></object>
+                </div>
+                <a href="#">Conheça nossos serviços</a>
+            </div>
+            <div class="main-banner">
+                <img src="img/Veterinarian-Best-Wallpaper.jpg" alt="">
+            </div>
+        </section>
+
+        <section class="container-atendimento">
+          <div class="text-atendimento">
+              <h1>Precisando de um veterinário perto de você neste momento?</h1>
+              <p>Encontre atendimento 24h, serviços de emergência, especialistas, cuidados para animais exóticos e muito mais.</p>
+              <div class="searchbox-atendimento">
+                  <input type="text" placeholder="Qual especialista você busca hoje?">
+                  <button>&#10132;</button>
+              </div>
+          </div>
+          <div class="image-atendimento">
+              <img src="img/cachorro-e-gato-600x439.png" alt="Cachorro fofo">
+          </div>
+        </section>
+
+        <section class="container-especialidades">
+          <h1>Navegue por todas as <span>especialidades</span> aqui</h1>
+          <p>No Pet Care:Connect, oferecemos um catálogo abrangente e acessível com diversos profissionais veterinários para atender às suas necessidades.</p>
+          
+          <div class="content-especialidades">
+              <div class="card-especialidade">
+                  <img src="img/icon cat e dog.png" alt="Ícone de cachorro e gato">
+                  <h2>Pets</h2>
+                  <p>Cães e gatos são pets queridos que vivem com os humanos, trazendo companhia e diversão para o dia a dia</p>
+                  <a href="vetProfile.html">Encontre Especialistas →</a>
+              </div>
+              <div class="card-especialidade">
+                  <img src="img/icon-coelho.png" alt="Ícone de coelho">
+                  <h2>Pets Não Convencionais</h2>
+                  <p>Animais que não são nativos do ambiente em que vivem, sendo considerados exóticos e exigindo cuidados especiais para adaptação e bem-estar.</p>
+                  <a href="login-basico/cardVeterinarios.html">Encontre Especialistas →</a>
+              </div>
+              <div class="card-especialidade">
+                  <img src="img/icon-cavalo.png" alt="Ícone de cavalo">
+                  <h2>Pets de Grande Porte</h2>
+                  <p>Animais de grande porte são aqueles que têm um tamanho superior ao habitual, destacando-se pela sua estatura imponente.</p>
+                  <a href="#">Encontre Especialistas →</a>
+              </div>
+          </div>
+        </section>
+
+        <section class="cadastro-informer">
+            <article class="title-cadastro">
+                <h1>Núcleo PetCare:Connect</h1>
+            </article>
+            <article class="text-cadastro">
+                <p>Aqui no nosso site, valorizamos a conexão entre tutores, pets, veterinários e estabelecimentos que cuidam desses membros especiais da família. Para facilitar essa interação, oferecemos três tipos de cadastros separados:
+                </p>
+            </article>
+        </section>
+
+        <section class="container-card">
+            <div class="cadastros-card">
+                <div class="main-cadastro card1">
+                    <div class="img-card">
+                        <img src="img/pet-dog-man.jpg" alt="">
+                    </div>
+                    <div class="patch-card patch1">
+                        <img src="img/charity-dog-svgrepo-com.svg" alt="">
+                    </div>
+
+                    <article>
+                        <h1>Cadastro de Tutores</h1>
+                        <hr>
+                        <p>Se você é o guardião amoroso de um pet, queremos conhecê-lo e ao seu amiguinho! Cadastre-se para ter acesso a recursos exclusivos, dicas personalizadas e promoções especiais para vocês dois.</p>
+                    </article>
+
+                    <nav class="link-cadastro link1">
+                        <a href="cadTutor.html">Acesse</a>
+                    </nav>
+                </div>
+                    
+                <div class="main-cadastro card2">
+                    <div class="img-card">
+                        <img src="img/pexels-tima-miroshnichenko-6235233.jpg" alt="">
+                    </div>
+                    <div class="patch-card patch2">
+                        <img src="img/veterinarian-2-com.svg" alt="">
+                    </div>
+
+                    <article>
+                        <h1>Cadastro de Veterinários</h1>
+                        <hr>
+                        <p>Veterinários desempenham um papel crucial na saúde e no bem-estar dos nossos amigos peludos. Se você é um veterinário comprometido em oferecer os melhores cuidados, junte-se a nós! Cadastre-se para conectar-se com tutores e estar disponível para ajudar sempre que necessário.</p>
+                    </article>
+
+                    <nav class="link-cadastro link2">
+                        <a href="cadVet.html">Acesse</a>
+                    </nav>
+                </div>
+
+               
+            </div>
+        </section>
+
+        <section class="AvisosDeCuidados">
+          <div class="Container-avisos">
+            <div class="content-avisos">
+              <h1 class="h1-avisos">Em quais situações levar seu pet ao veterinário?</h1>
+              <p class="p-avisos">O veterinário desempenha um papel fundamental na qualidade de vida do seu pet, oferecendo suporte em diversas situações, tais como:</p>
+             
+              <div class="lista-avisos">
+               <ul class="ul-avisos">
+                <li class="li-avisos">✅ Vacinas e medicamentos</li>
+                <li class="li-avisos">✅ Detecção antecipada de doenças</li>
+                <li class="li-avisos">✅ Acompanhamento veterinário regular</li>
+                <li class="li-avisos">✅ Prevenção e cuidados essenciais</li>
+                <li class="li-avisos">✅ Dicas sobre nutrição e cuidados com a higiene</li>
+               </ul>
+              </div>
+            </div>
+
+            <div class="imagem-aviso">
+              <img src="img/Pets brincando.jpg" alt="Gato e Cachorro">
+            </div>
+          </div>
+        </section>
+
+        <section class="container-dicas">
+          <h2>Blog Pet Care: Venha aprender conosco!</h2>
+          <div class="grid-dicas">
+              <div class="card-dicas">
+                  <img src="img/cachorro doidao na janela.webp" alt="Cachorro lambendo a barriga">
+                  <h3>Cachorro lambendo a barriga excessivamente? – Pode ser alergia ou irritação na pele. Descubra como ajudar seu amigo!</h3>
+                  <a href="#">Saiba mais</a>
+              </div>
+              <div class="card-dicas">
+                  <img src="img/gato folgado.jpg" alt="Cachorro cansado">
+                  <h3>Gato vomitando com frequência? – Veja se é algo simples ou se requer atenção veterinária.</h3>
+                  <a href="#">Saiba mais</a>
+              </div>
+              <div class="card-dicas">
+                  <img src="img/coelhos.jpg" alt="Cachorro e alimentação crua">
+                  <h3>Pets exóticos com apetite reduzido? – Saiba o que pode estar afetando seu pet e como agir.</h3>
+                  <a href="#">Saiba mais</a>
+              </div>
+              <div class="card-dicas">
+                <img src="img/cavalo.jpg" alt="Cachorro e alimentação crua">
+                <h3>Cavalo mancando ou com dificuldade para se mover? – Pode ser problema nas articulações. Veja como tratar!</h3>
+                <a href="#">Saiba mais</a>
+            </div>
+          </div>
+      </section>
+
+      <section class="container-lembrete">
+        <div class="imagem-lembrete">
+            <img src="img/vacinas-para-cachorros-2-1.jpg" alt="Veterinária atendendo um cachorro">
+        </div>
+        <div class="conteudo-lembrete">
+            <h1>Mantenha a saúde do seu pet em dia de forma prática!</h1>
+            <p>Encontre clínicas veterinárias e parceiros especializados para garantir que a vacinação do seu pet esteja sempre atualizada. Conectamos você aos melhores profissionais para o cuidado do seu amigo!</p>
+            
+
+            <h3>Vacinas essenciais para cães e gatos:</h3>
+            <ul>
+                <li>Múltipla</li>
+                <li>Antirrábica</li>
+            </ul>
+
+            <h3>Outras vacinas para cães:</h3>
+            <ul>
+                <li>Gripe Canina</li>
+                <li>Giardíase</li>
+            </ul>
+
+            <div class="botoes-lembrete">
+                <a href="#" class="botao cachorro">🐶 Cachorro</a>
+                <a href="#" class="botao gato">🐱 Gato</a>
+            </div>
+        </div>
+      </section>
+         
+        <section class="stickybottom-fixed">
+          <div class="separate-grid">
+           <span>Encontre atendimento veterinário de emergência perto de você 🚨</span>
+           <p>Precisa encontrar um local para atendimento veterinário urgente, exame ou cirurgia para seu pet? </p>
+          </div>
+          <button>🚑 Emergência</button>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+          <div class="footer-row">
+            <h2>Sobre nós</h2>
+            <ul>
+              <a href="#">
+                <li>Nossa empresa</li>
+              </a>
+              <a href="#">
+                <li>Nossos serviços</li>
+              </a>
+              <a href="#">
+                <li>Atendimento ao cliente</li>
+              </a>
+              <a href="#">
+                <li>Compliance e Privacidade</li>
+              </a>
+              <a href="#">
+                <li>Código de Ética e Conduta</li>
+              </a>
+            </ul>
+          </div>
+          <div class="footer-row">
+            <h2>Carreiras</h2>
+            <ul>
+              <a href="#">
+                <li>Central de carreiras</li>
+              </a>
+              <a href="#">
+                <li>Trabalhe conosco</li>
+              </a>
+            </ul>
+          </div>
+          <div class="footer-row">
+            <h2>Impacto social</h2>
+            <ul>
+              <a href="#">
+                <li>Comunidade</li>
+              </a>
+              <a href="#">
+                <li>Meio ambiente</li>
+              </a>
+              <a href="#">
+                <li>Fornecimento ético</li>
+              </a>
+              <a href="#">
+                <li>Conexão com clientes</li>
+              </a>
+            </ul>
+          </div>
+          <div class="footer-row">
+            <h2>PetCare:Connect vínculos</h2>
+            <ul>
+              <a href="#">
+                <li>Termos & Condições</li>
+              </a>
+              <a href="#">
+                <li>Termos & Condições dos vínculos</li>
+              </a>
+              <a href="#">
+                <li>Termos & Condições do atendimento</li>
+              </a>
+            </ul>
+          </div>
+        </div>
+        <hr class="hr-linha" aria-hidden="true" />
+        <div class="social-media-icons">
+          <a href="#"><img src="img/facebook.png" alt="" /></a>
+          <a href="#"><img src="img/instagram.png" alt="" /></a>
+          <a href="#"><img src="img/twitter.png" alt="" /></a>
+         
+        <p class="footer-copyright">
+          © 2024 Starbucks Coffee Company. Todos os direitos reservados.
+        </p>
+      </footer>
+
+
+
+</body>
+</html>
