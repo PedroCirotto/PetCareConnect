@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { API_URL } from "@/lib/const";
 
 export function RegisterForm({ className, ...props }) {
   const [form, setForm] = useState({
@@ -24,7 +25,7 @@ export function RegisterForm({ className, ...props }) {
     e.preventDefault();
   
     try {
-      const res = await fetch("http://localhost:5000/register", {
+      const res = await fetch(`https://petcare-backend-000a9afe2063.herokuapp.com/register}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

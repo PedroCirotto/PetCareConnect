@@ -1,0 +1,1 @@
+export const API_URL = "https://petcare-backend-000a9afe2063.herokuapp.com/"

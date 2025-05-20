@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { API_URL } from "@/lib/const.js";
 
 export function LoginForm({ className, ...props }) {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ export function LoginForm({ className, ...props }) {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/login", {
+      const res = await fetch(`https://petcare-backend-000a9afe2063.herokuapp.com/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
