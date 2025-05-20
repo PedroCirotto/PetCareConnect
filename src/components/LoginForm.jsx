@@ -31,11 +31,11 @@ export function LoginForm({ className, ...props }) {
         throw new Error(data.message || "Erro ao logar");
       }
 
-      // Armazena o token e dados no localStorage
+      
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      // Redireciona para a home/dashboard
+      
       navigate("/");
 
     } catch (err) {
