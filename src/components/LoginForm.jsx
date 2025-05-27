@@ -5,16 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { API_URL } from "@/lib/const.js";
+import { Loader2 } from "lucide-react"; 
 
 export function LoginForm({ className, ...props }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
 
     try {
       const res = await fetch(`https://petcare-backend-000a9afe2063.herokuapp.com/login`, {
@@ -40,6 +43,8 @@ export function LoginForm({ className, ...props }) {
 
     } catch (err) {
       setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -89,8 +94,13 @@ export function LoginForm({ className, ...props }) {
                   required
                 />
               </div>
+              
               <Button type="submit" className="w-full">
-                Logar
+                {isLoading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  "Entrar"
+                )}
               </Button>
 
               <div className="text-center text-sm">

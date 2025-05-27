@@ -17,6 +17,7 @@ import Cadastros from "./pages/PublicRoutes/Cadastros";
 import Dashboard from "./pages/Private/Dashboard";
 import Blogcachorro from "./pages/PublicRoutes/Blogcachorro/index.jsx";
 import Agendar from "./pages/Private/Agendar/index.jsx";
+import Veterinario from "./pages/Private/Veterinario/index.jsx";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -50,6 +51,7 @@ function App() {
         <Routes>
           {/* Rotas privadas */}
           <Route path="/agendar" element={<PrivateRoute><Agendar /></PrivateRoute>} />
+          <Route path="/veterinario" element={<PrivateRoute><Veterinario /></PrivateRoute>} />
           
           {/* Rotas públicas */}
           <Route path="/" element={<Home />} />

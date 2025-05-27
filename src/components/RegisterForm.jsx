@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { API_URL } from "@/lib/const";
+import { Loader2 } from "lucide-react"; 
 
 export function RegisterForm({ className, ...props }) {
+  const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = useState({
     first_name: "",
     last_name: "",
@@ -23,9 +24,10 @@ export function RegisterForm({ className, ...props }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
   
     try {
-      const res = await fetch(`https://petcare-backend-000a9afe2063.herokuapp.com/register}`, {
+      const res = await fetch(`https://petcare-backend-000a9afe2063.herokuapp.com/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -46,6 +48,8 @@ export function RegisterForm({ className, ...props }) {
       window.location.href = "/"; // ou redirecione para onde desejar
     } catch (err) {
       alert(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -143,7 +147,14 @@ export function RegisterForm({ className, ...props }) {
               </div>
 
               <Button type="submit" className="w-full">
-                Registrar
+                {
+                  isLoading ? (
+                    <Loader2 className="animate-spin" />
+                  ) :
+                  (
+                    "Criar Conta"
+                  )
+                }
               </Button>
 
               <div className="text-center text-sm">
