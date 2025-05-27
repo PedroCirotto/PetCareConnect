@@ -51,7 +51,7 @@ export default function CadastroVeterinario() {
 
       try {
         const response = await fetch(
-          "https://petcare-backend-000a9afe2063.herokuapp.com/veterinarios",
+          "https://petcare-backend-000a9afe2063.herokuapp.com/veterinario",
           {
             method: "POST",
             body: formDataToSend,
