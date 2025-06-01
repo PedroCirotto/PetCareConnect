@@ -28,9 +28,10 @@ export default function Agendar() {
   useEffect(() => {
     async function fetchVeterinarios() {
       try {
-        const response = await fetch("https://682bc191d29df7a95be459c2.mockapi.io/veterinarios/veterinarios")
+        const response = await fetch("https://petcare-backend-000a9afe2063.herokuapp.com/veterinario")
         if (!response.ok) throw new Error(`Erro: ${response.statusText}`)
         const data = await response.json()
+        console.log(data, "vets")
         setVeterinarios(data)
       } catch (err) {
         setError(err.message)
@@ -99,18 +100,14 @@ export default function Agendar() {
               >
                 <div className="flex items-start gap-4">
                   <img
-                    src={vet.imagem}
+                    src={`https://petcare-backend-000a9afe2063.herokuapp.com${vet.foto}`}
                     alt={vet.nome}
                     className="w-20 h-20 rounded-full object-cover"
                   />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Nome: {vet.name}</h3>
-                    <p className="text-sm text-gray-600">{vet.endereco}, {vet.cidade}</p>
-                    {vet.atendeTeleConsulta && (
-                      <span className="inline-block mt-1 px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 rounded">
-                        🖥️ Atende por teleconsulta
-                      </span>
-                    )}
+                    <h3 className="text-lg font-semibold text-gray-900">Nome: {vet.nome}</h3>
+                    <p className="text-sm text-gray-600">{vet.endereco}</p>
+                    
                   </div>
                 </div>
                 <Dialog className='m-4'>

@@ -34,7 +34,7 @@ export default function Example() {
     <header className="bg-[#00A651]">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5">
+          <a href="/" className="-m-1.5">
             <span className="sr-only">Your Company</span>
             <img
               alt=""

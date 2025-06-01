@@ -15,11 +15,10 @@ export default function CadastroVeterinario() {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
-    crmv: "",
+    crmv: "", 
     telefone: "",
     especialidade: "",
     endereco: "",
-    senha: "",
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: "", text: "" });
@@ -44,7 +43,6 @@ export default function CadastroVeterinario() {
     formDataToSend.append("telefone", formData.telefone);
     formDataToSend.append("especialidade", formData.especialidade);
     formDataToSend.append("endereco", formData.endereco);
-    formDataToSend.append("senha", formData.senha);
 
     if (foto) {
       formDataToSend.append("foto", foto);
