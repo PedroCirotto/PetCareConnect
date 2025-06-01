@@ -12,12 +12,14 @@ import Login from "./pages/PublicRoutes/Login";
 import Register from "./pages/PublicRoutes/Register";
 import Servicos from "./pages/PublicRoutes/Servicos";
 import Cadastros from "./pages/PublicRoutes/Cadastros";
+import Contato from "./pages/PublicRoutes/Contato";
 
 // Páginas privadas
 import Dashboard from "./pages/Private/Dashboard";
 import Blogcachorro from "./pages/PublicRoutes/Blogcachorro/index.jsx";
 import Agendar from "./pages/Private/Agendar/index.jsx";
 import Veterinario from "./pages/Private/Veterinario/index.jsx";
+import Sobre from "./pages/PublicRoutes/Sobre/index.jsx";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -63,6 +65,8 @@ function App() {
           <Route path="/estabelecimento" element={<Estabelecimento />} />
           <Route path="/cadastros" element={<Cadastros />} />
           <Route path="/servicos" element={<Servicos />} />
+          <Route path="/contato" element={<Contato />} />
+          <Route path="/sobre" element={<Sobre />} />
 
         </Routes>
       </BrowserRouter>

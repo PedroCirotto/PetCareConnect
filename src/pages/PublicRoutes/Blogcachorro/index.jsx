@@ -1,5 +1,6 @@
 // import "@/css/blog.css";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
 export default function Blogcachorro() {
@@ -87,7 +88,8 @@ export default function Blogcachorro() {
       <p className="mb-6">
         Vacinar seu cão é um gesto de amor e proteção — além de proteger seu pet, você colabora com a saúde pública e evita a disseminação de doenças.
       </p>
-    </div>
+      </div>
+      <Footer />
     </>
   );
 }

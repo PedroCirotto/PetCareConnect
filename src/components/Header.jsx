@@ -57,14 +57,14 @@ export default function Example() {
           <a href="/" className="text-base  text-white">
             Home
           </a>
-          <a href="#" className="text-base  text-white">
-            About
+          <a href="/sobre" className="text-base  text-white">
+            Sobre
           </a>
-          <a href="#" className="text-base  text-white">
-            Services
+          <a href="/servicos" className="text-base  text-white">
+            Serviços
           </a>
-          <a href="#" className="text-base  text-white">
-            Contact
+          <a href="/contato" className="text-base  text-white">
+            Contato
           </a>
         </PopoverGroup>
         {
@@ -125,22 +125,22 @@ export default function Example() {
                   Home
                 </a>
                 <a
-                  href="#"
+                  href="/sobre"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  About
+                  Sobre
                 </a>
                 <a
-                  href="#"
+                  href="/servicos"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Services
+                  Serviços
                 </a>
                 <a
-                  href="#"
+                  href="/contato"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Contact
+                  Contato
                 </a>
               </div>
               <div className="py-6">

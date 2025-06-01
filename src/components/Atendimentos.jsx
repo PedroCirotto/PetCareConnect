@@ -9,18 +9,7 @@ export default function Atendimentos() {
                 <p className="text-base sm:text-lg lg:text-xl my-6">
                     Encontre atendimento 24h, serviços de emergência, especialistas, cuidados para animais exóticos e muito mais.
                 </p>
-
-                {/* Barra de busca */}
-                <div className="bg-white flex items-center justify-between px-4 py-2 rounded-full max-w-xl mx-auto w-full">
-                    <input
-                        type="text"
-                        placeholder="Digite sua busca..."
-                        className="flex-1 px-4 outline-none text-sm sm:text-base"
-                    />
-                    <button className="bg-blue-500 text-white p-3 rounded-full text-xl">
-                        &#10140;
-                    </button>
-                </div>
+                
             </div>
 
             {/* Imagem */}

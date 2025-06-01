@@ -2,10 +2,8 @@ import Especialidades from "@/components/Especialidades";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 import Hero from "../../../components/Hero";
-import WhatsZap from "../../../components/WhatsZap";
 import Atendimentos from "@/components/Atendimentos";
 import Blog from "@/components/Blog";
-import WatsonChat from "@/components/WatsonChat";
 
 function Home() {
   return (
@@ -18,7 +16,6 @@ function Home() {
         <Blog />
       </main>
       <Footer />
-      <WatsonChat/>
     </>
   );
 }

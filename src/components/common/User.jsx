@@ -112,7 +112,6 @@ export default function DropdownMenuDemo() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem onClick={abrirModal}>Consultas</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuItem onClick={() => window.location.href = '/veterinario'} className="font-bold">Cadastre-se como veterinario!</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
