@@ -1,6 +1,30 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+const time = [
+  {
+    name: "Guilherme Bucci",
+    role: "Designer UI/UX e Front-end",
+    img: "/imgs/gui.png",
+  },
+  {
+    name: "Giovanna Cabrera",
+    role: "Copywriter e QA",
+    img: "/imgs/gih.jpeg",
+  },
+  {
+    name: "Pedro Cirotto",
+    role: "Desenvolvedor Full-stack",
+    img: "/imgs/pedro.jpg",
+  },
+  {
+    name: "João Ferreira",
+    role: "Scrum master",
+    img: "/imgs/joao.png",
+  },
+
+]
+
 export default function Sobre() {
   return (
     <>
@@ -53,34 +77,8 @@ export default function Sobre() {
         <section className="py-16 px-6 md:px-20 bg-gray-50">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-semibold text-center mb-10 text-indigo-700">Nossa Equipe</h2>
-            <div className="grid gap-10 md:grid-cols-5 text-center">
-              {[
-                {
-                  name: "Guilherme Bucci",
-                  role: "Designer UI/UX e Front-end",
-                  img: "/imgs/gui.png",
-                },
-                {
-                  name: "Giovanna Cabrera",
-                  role: "Copywriter e QA",
-                  img: "/imgs/gih.jpeg",
-                },
-                {
-                  name: "Pedro Cirotto",
-                  role: "Desenvolvedor Full-stack",
-                  img: "/imgs/pedro.jpg",
-                },
-                {
-                  name: "João Ferreira",
-                  role: "Scrum master",
-                  img: "/imgs/joao.png",
-                },
-                {
-                  name: "Leonardo",
-                  role: "Desenvolvedor Back-end",
-                  img: "/imgs/leo.png",
-                },
-              ].map(({ name, role, img }, i) => (
+            <div className="grid gap-10 md:grid-cols-4     text-center">
+              {time.map(({ name, role, img }, i) => (
                 <div key={i} className="bg-white rounded-xl shadow p-4">
                   <img src={img} alt={name} className="w-32 h-32 mx-auto rounded-full object-cover mb-4" />
                   <h3 className="text-xl font-medium text-gray-800">{name}</h3>

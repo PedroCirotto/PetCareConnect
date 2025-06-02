@@ -62,6 +62,7 @@ export default function Agendar() {
     setTipoPet("")
     setDataConsulta("")
     alert("Consulta agendada com sucesso!")
+    window.location.href = "/"
   }
 
   if (loading) {

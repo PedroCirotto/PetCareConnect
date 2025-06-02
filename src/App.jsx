@@ -13,13 +13,17 @@ import Register from "./pages/PublicRoutes/Register";
 import Servicos from "./pages/PublicRoutes/Servicos";
 import Cadastros from "./pages/PublicRoutes/Cadastros";
 import Contato from "./pages/PublicRoutes/Contato";
+import Blogcachorro from "./pages/PublicRoutes/Blogcachorro/index.jsx";
 
 // Páginas privadas
 import Dashboard from "./pages/Private/Dashboard";
-import Blogcachorro from "./pages/PublicRoutes/Blogcachorro/index.jsx";
 import Agendar from "./pages/Private/Agendar/index.jsx";
 import Veterinario from "./pages/Private/Veterinario/index.jsx";
 import Sobre from "./pages/PublicRoutes/Sobre/index.jsx";
+import BlogGatoVomitando from "./pages/PublicRoutes/Bloggato/index.jsx";
+import BlogPetsExoticosApetite from "./pages/PublicRoutes/Blogexotico/index.jsx";
+import BlogCavaloMancando from "./pages/PublicRoutes/Blogcavalo/index.jsx";
+
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -62,6 +66,9 @@ function App() {
           <Route path="/tutores" element={<Tutores />} />
           <Route path="/veterinario" element={<Vet />} />
           <Route path="/blogcachorro" element={<Blogcachorro />} />
+          <Route path="/bloggato" element={<BlogGatoVomitando />} />
+          <Route path="/blogexotico" element={<BlogPetsExoticosApetite />} />
+          <Route path="/blogcavalo" element={<BlogCavaloMancando />} />
           <Route path="/estabelecimento" element={<Estabelecimento />} />
           <Route path="/cadastros" element={<Cadastros />} />
           <Route path="/servicos" element={<Servicos />} />

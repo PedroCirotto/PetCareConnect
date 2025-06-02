@@ -5,7 +5,6 @@ export default function Blog() {
                 Blog Pet Care: Venha aprender conosco!
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center">
-                {/* Card Template */}
                 {[
                     {
                         img: "imgs/janeladog.jpg",
@@ -16,19 +15,19 @@ export default function Blog() {
                     {
                         img: "imgs/gatodeitado.jpg",
                         alt: "Gato vomitando",
-                        href: "/blogcachorro",
+                        href: "/bloggato",
                         title: "Gato vomitando com frequência? – Veja se é algo simples ou se requer atenção veterinária.",
                     },
                     {
                         img: "imgs/exotico.jpeg",
                         alt: "Pets exóticos com apetite reduzido",
-                        href: "/blogcachorro",
+                        href: "/blogexotico",
                         title: "Pets exóticos com apetite reduzido? – Saiba o que pode estar afetando seu pet e como agir.",
                     },
                     {
                         img: "imgs/cavalo.jpg",
                         alt: "Cavalo mancando",
-                        href: "/blogcachorro",
+                        href: "/blogcavalo",
                         title: "Cavalo mancando ou com dificuldade para se mover? – Pode ser problema nas articulações. Veja como tratar!",
                     }
                 ].map(({ img, alt, title, href }, index) => (
